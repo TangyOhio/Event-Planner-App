@@ -27,4 +27,15 @@ x
       render :edit
     end
   end
+
+  private
+    def event_routes
+      @event = Event.find(params[:id])
+    end
+
+    def event_params
+      params.require(:event).permit(:title, :category, :description, :date, start_time:, end_time:, private:, event_image:)
+    end
+  end
+
 end
