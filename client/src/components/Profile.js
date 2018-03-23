@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Header } from 'semantic-ui-react';
 
-class Home extends Component {
+class Profile extends Component {
   render() {
     return (
-      <Header as='h1' textAlign='center'>DPL Events</Header>
+      <Header as='h1' textAlign='center'>Profile</Header>
     );
   }
 }
 
-export default Home;
+export default Profile;
