@@ -10,6 +10,9 @@ import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
 import Profile from './Profile';
+import Settings from './Settings';
+import InviteForm from './InviteForm';
+import EventsForm from './EventsForm';
 
 class App extends Component {
   render() {
@@ -21,6 +24,9 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Home} />
             <ProtectedRoute exact path='/profile' component={Profile} />
+            <ProtectedRoute exact path='/Settings' component={Settings} />
+            <ProtectedRoute exact path='/eventsform' component={EventsForm} />
+            <ProtectedRoute exact path='/inviteform' component={InviteForm} />
             <AuthRoute exact path='/login' component={Login} />
             <AuthRoute exact path='/register' component={Register} />
             <Route component={NoMatch} />
