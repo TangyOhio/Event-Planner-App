@@ -19,7 +19,7 @@ class Api::EventsController < ApplicationController
       render :new
     end
   end
-x
+
   def update
     if @event.update(event_params)
       redirect_to event_path(@event)
