@@ -15,6 +15,19 @@ ActiveRecord::Schema.define(version: 20180323012152) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.string "category"
+    t.string "description"
+    t.date "date"
+    t.time "start_time"
+    t.time "end_time"
+    t.boolean "private"
+    t.string "event_image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
