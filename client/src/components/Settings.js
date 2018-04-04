@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, Segment, Header, Tab } from 'semantic-ui-react'
 import SettingsForm from './SettingsForm';
+import NotificationSettings from './NotificationSettings';
     
             // This code pertains to the account settings page
 
@@ -9,7 +10,7 @@ const panes = [
     <SettingsForm/>
   </Tab.Pane> 
   },
-  { menuItem: 'Notification Settings', render: () => <Tab.Pane attached={false}>Notification Settings</Tab.Pane> },
+  { menuItem: 'Notification Settings', render: () => <Tab.Pane attached={false}><NotificationSettings/></Tab.Pane> },
   { menuItem: 'Delete Account', render: () => <Tab.Pane attached={false}>Delete Account</Tab.Pane> },
 ]
 
