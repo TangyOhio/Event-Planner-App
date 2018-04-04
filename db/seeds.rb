@@ -10,4 +10,9 @@
   Event.create(title: title, category: category, description: description, date: date, start_time: start_time, end_time: end_time, private: private, event_image: event_image )
 end
 
+User.create(
+  email: "test@test.com",
+  password: "password"
+)
+
 puts 'done seeded'
