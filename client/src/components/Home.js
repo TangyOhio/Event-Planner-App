@@ -14,6 +14,7 @@ import {
   Sidebar,
   Visibility,
 } from 'semantic-ui-react'
+import Carousel from './Carousel';
   
   class Home extends Component {
     
