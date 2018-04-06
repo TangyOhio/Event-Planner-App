@@ -20,6 +20,7 @@ import {
     render() {
     return (
       <Segment inverted>
+        <Carousel />
         <Container text>
           <Header
             as='h1'
@@ -157,6 +158,4 @@ import {
   }
 }
 
-
-  
 export default Home;
