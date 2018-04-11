@@ -5626,9 +5626,9 @@ react-redux@^5.0.7:
     loose-envify "^1.1.0"
     prop-types "^15.6.0"
 
-react-responsive-carousel@^3.1.35:
-  version "3.1.35"
-  resolved "https://registry.yarnpkg.com/react-responsive-carousel/-/react-responsive-carousel-3.1.35.tgz#c2d029ddbe8b89a6bc6fdf9935290874ea95625d"
+react-responsive-carousel@^3.1.36:
+  version "3.1.36"
+  resolved "https://registry.yarnpkg.com/react-responsive-carousel/-/react-responsive-carousel-3.1.36.tgz#e50abd6113627ebc9326f67d6c68e82509feddd9"
   dependencies:
     classnames "^2.2.5"
     prop-types "^15.5.8"

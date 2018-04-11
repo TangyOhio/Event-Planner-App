@@ -12,7 +12,7 @@ class NavBar extends Component {
 
     if (user.id) {
       return (
-        <Menu.Menu position='right'>
+        <Menu.Menu inverted position='right'>
           <Menu.Item
             name='Logout'
             onClick={() => dispatch(handleLogout(history))}
@@ -34,8 +34,8 @@ class NavBar extends Component {
 
   render() {
     return (
-      <div>
-        <Menu pointing secondary>
+      <div style={styles.navbar}>
+        <Menu inverted pointing secondary>
           <Link to='/'>
             <Menu.Item name='Home'/>
               <SVG viewBox='0 0 24 23' src="client/src/images/SVG/DPL-Mark.svg">
@@ -59,6 +59,14 @@ class NavBar extends Component {
         </Menu>
       </div>
     );
+  }
+}
+
+const styles = {
+  navbar: {
+    backgroundColor: "#53407A",
+    color: "white"
+
   }
 }
 
