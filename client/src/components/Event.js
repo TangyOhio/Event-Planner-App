@@ -1,47 +1,46 @@
 import React from 'react';
 import axios from 'axios';
 import EventsForm from './EventsForm';
+import { Redirect, Link } from 'react-router-dom';
 
 class Event extends React.Component {
-  state = { event: {}, edit: false }
+  state = { events: [] }
 
   componentDidMount() {
-    axios.get(`/api/events/${this.props.match.params.id}`)
-      .then( res => this.setState({ event: res.data }) )
+    axios.get('/api/events')
+      .then( res => this.setState({ events: res.data }) )
   }
 
-  toggleEdit = () => {
-    this.setState( state => {
-      return { edit: !this.state.edit }
-    });
-  }
+  // submit = (event) => {
+  //   axios.put(`/api/events/${this.props.match.params.id}`, { event })
+  //     .then( res => this.setState({ event: res.data, edit: false }) );
+  // }
 
-  submit = (event) => {
-    axios.put(`/api/events/${this.props.match.params.id}`, { event })
-      .then( res => this.setState({ event: res.data, edit: false }) );
-  }
+  // show() {
+  //   let { event: { title, description }} = this.state;
+  //   return (
+  //     <div>
+  //       <h1>{title}</h1>
+  //       <h3>{description}</h3>
+  //     </div>
+  //   )
+  // }
 
-  show() {
-    let { event: { title, description }} = this.state;
-    return (
-      <div>
-        <h1>{title}</h1>
-        <h3>{description}</h3>
-      </div>
-    )
-  }
-
-  edit() {
-    return <EventsForm {...this.state.event} submit={this.submit} />
-  }
+  // edit() {
+  //   return <EventsForm {...this.state.event} submit={this.submit} />
+  // }
 
   render() {
-    let { edit } = this.state;
+    let { events } = this.state;
     return (
-      <div>
-        { edit ? this.edit() : this.show() }
-        <button onClick={this.toggleEdit}>{ edit ? 'Cancel' : 'Edit' }</button>
-      </div>
+      <ul>
+          { events.map( e =>
+              <li key={e.id}>
+                <Link to={`/events/${e.id}`}>{e.title}</Link>
+              </li>
+            )
+          }
+        </ul>
     )
   }
 }

@@ -52,6 +52,9 @@ class NavBar extends Component {
           <Link to='settings'>
             <Menu.Item name='settings' />
           </Link>
+          <Link to='eventlist'>
+            <Menu.Item name='event list' />
+          </Link>
           { this.rightNavs() }
         </Menu>
       </div>
