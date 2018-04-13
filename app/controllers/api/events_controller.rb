@@ -4,7 +4,7 @@ class Api::EventsController < ApplicationController
   end
 
   def show
-    render json: @product
+    render json: @event
   end
 
   def create

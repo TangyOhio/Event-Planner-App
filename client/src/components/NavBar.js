@@ -39,12 +39,8 @@ class NavBar extends Component {
           <Link to='/'>
             <Menu.Item name='Home'/>
               <SVG viewBox='0 0 24 23' src="client/src/images/SVG/DPL-Mark.svg">
-
                 <img src="client/src/images/SVG/DPL-Mark.svg" />
-                </SVG>
-
-
-
+              </SVG>
           </Link>
           <Link to='profile'>
             <Menu.Item name='profile' />
@@ -54,6 +50,9 @@ class NavBar extends Component {
           </Link>
           <Link to='eventlist'>
             <Menu.Item name='event list' />
+          </Link>
+          <Link to='eventform'>
+            <Menu.Item name='event form' />
           </Link>
           { this.rightNavs() }
         </Menu>

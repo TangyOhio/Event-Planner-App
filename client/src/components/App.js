@@ -13,6 +13,7 @@ import Profile from './Profile';
 import Settings from './Settings';
 import InviteForm from './InviteForm';
 import EventList from './EventList';
+import EventForm from './EventForm';
 
 class App extends Component {
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
             <ProtectedRoute exact path='/profile' component={Profile} />
             <ProtectedRoute exact path='/Settings' component={Settings} />
             <ProtectedRoute exact path='/eventlist' component={EventList} />
+            <Route exact path='/eventform' component={EventForm} />
             <ProtectedRoute exact path='/inviteform' component={InviteForm} />
             <AuthRoute exact path='/login' component={Login} />
             <AuthRoute exact path='/register' component={Register} />
