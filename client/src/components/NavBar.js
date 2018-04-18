@@ -42,16 +42,16 @@ class NavBar extends Component {
                 <img src="client/src/images/SVG/DPL-Mark.svg" />
               </SVG>
           </Link>
-          <Link to='profile'>
+          <Link to='/profile'>
             <Menu.Item name='profile' />
           </Link>
-          <Link to='settings'>
+          <Link to='/settings'>
             <Menu.Item name='settings' />
           </Link>
-          <Link to='eventlist'>
+          <Link to='/eventlist'>
             <Menu.Item name='event list' />
           </Link>
-          <Link to='eventform'>
+          <Link to='/eventform'>
             <Menu.Item name='event form' />
           </Link>
           { this.rightNavs() }
