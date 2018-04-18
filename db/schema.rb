@@ -20,10 +20,11 @@ ActiveRecord::Schema.define(version: 20180323012152) do
     t.string "category"
     t.string "description"
     t.date "date"
-    t.time "start_time"
-    t.time "end_time"
+    t.string "start_time"
+    t.string "end_time"
     t.boolean "private"
     t.string "event_image"
+    t.integer "xp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

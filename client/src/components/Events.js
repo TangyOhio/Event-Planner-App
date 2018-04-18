@@ -1,6 +1,7 @@
 import React, { Component, Link } from 'react';
-import { Header, Card, Grid, Segment, Container, Image } from 'semantic-ui-react';
+import { Header, Card, Grid, Segment, Container, Image, Icon } from 'semantic-ui-react';
 import axios from 'axios';
+
 
 class Events extends Component {
   state = { events: [] }
@@ -31,30 +32,30 @@ class Events extends Component {
   displayEvents = () => {
   return this.state.events.map( event => {
     return(
-
-      <Card>
+      <Card color="purple">
+        <Image src={ event.event_image } />
         <Card.Content>
           <Card.Header>
-            {event.title}
-            <hr />
-            {event.category}
+            <Link to='/events/:id'>
+              {event.title}
+            </Link>
           </Card.Header>
-          <Grid>
-            <Grid.Row>
-              <Grid.Column width={16}>
-                <Image src={ event.event_image } />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+          <Card.Meta>
+            <span className='date'>
+              { event.date}
+            </span>
+          </Card.Meta>
           <Card.Description>
             {event.description}
           </Card.Description>
-          <Link to ={`/event/${event.id}`}>
-            View Details
-          </Link>
         </Card.Content>
-        <Card.Content extra>
-          { this.eventTime(event)}
+        <Card.Content extra textAlign='centered'>
+          <Icon name='calendar' />
+            { this.eventTime(event)}
+          <Divider/>
+          <Progress percent={event.xp} size='tiny'>
+            XP: {event.xp}
+          </Progress>
         </Card.Content>
       </Card>
     )

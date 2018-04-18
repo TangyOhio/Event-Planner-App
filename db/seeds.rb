@@ -1,13 +1,14 @@
 50.times do
   title = Faker::Name.title
   category = Faker::Commerce.department
-  description = Faker::Lovecraft.paragraph
-  date = Faker::Time.between(DateTime.now - 1, DateTime.now)
-  start_time =Faker::Time.between(30.days.ago, 14.days.ago, :all)
-  end_time = Faker::Time.between(14.days.ago, Date.today, :all)
+  description = Faker::Company.catch_phrase
+  date = Faker::Date.between(7.days.ago, Date.today)
+  start_time = "#{rand 4..6}pm"
+  end_time = "#{rand 7..9}pm"
   private = false
   event_image = Faker::Placeholdit.image("100x100")
-  Event.create(title: title, category: category, description: description, date: date, start_time: start_time, end_time: end_time, private: private, event_image: event_image )
+  xp = rand(10..100)
+  Event.create(title: title, category: category, description: description, date: date, start_time: start_time, end_time: end_time, private: private, event_image: event_image, xp: xp )
 end
 
 User.create(

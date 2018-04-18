@@ -14,7 +14,7 @@ import Settings from './Settings';
 import InviteForm from './InviteForm';
 import EventList from './EventList';
 import EventForm from './EventForm';
-import Event from './Event';
+import Events from './Event';
 
 class App extends Component {
   render() {
@@ -30,7 +30,7 @@ class App extends Component {
             <ProtectedRoute exact path='/eventlist' component={EventList} />
             <Route exact path='/eventform' component={EventForm} />
             <ProtectedRoute exact path='/inviteform' component={InviteForm} />
-            <Route path="/event/:id" component={Event} />
+            <Route path="/events/:id" component={Events} />
             <AuthRoute exact path='/login' component={Login} />
             <AuthRoute exact path='/register' component={Register} />
             <Route component={NoMatch} />
