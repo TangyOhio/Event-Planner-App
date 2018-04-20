@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form, Segment, Header, Tab } from 'semantic-ui-react'
 import SettingsForm from './SettingsForm';
 import NotificationSettings from './NotificationSettings';
+
     
             // This code pertains to the account settings page
 
@@ -28,4 +29,7 @@ class Settings extends Component {
   }
 }
 
+
+
 export default Settings;
+        

@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import { List, Header, Card, Container, GridColumn, Grid, Image, Icon, Divider, Progress } from 'semantic-ui-react';
+import { List, Header, Card, Container, GridColumn, Grid, Image, Icon, Divider, Progress, Button } from 'semantic-ui-react';
 import { Redirect, Link } from 'react-router-dom';
 // import { isAuthenticated } from '../fakeAuth';
 import  Events from './Events';
+import { connect } from 'react-redux';
 
 class EventList extends React.Component {
   state = { events: [] }
@@ -14,6 +15,18 @@ class EventList extends React.Component {
         console.log(res)
         this.setState({ events: res.data })
     }).catch(err => {
+        console.log(err)
+    })
+  }
+
+  handleRSVP = (id) => {
+    const { account } = this.props;
+    let rsvp = { user_id: account.id, event_id: id }
+    console.log(rsvp)
+    axios.post('/api/rsvps', { rsvp } )
+    .then( res => {
+        console.log(res)
+      }).catch( err => {
         console.log(err)
     })
   }
@@ -64,6 +77,7 @@ class EventList extends React.Component {
             XP: {event.xp}
           </Progress>
         </Card.Content>
+        <Button onClick={() => this.handleRSVP(event.id)}>Register</Button>
       </Card>
     )
   })
@@ -82,4 +96,10 @@ class EventList extends React.Component {
   }
 }
 
-export default EventList;
+const mapStateToProps = (state, props) => {
+  return {
+    account: state.user
+  }
+}
+
+export default connect(mapStateToProps)(EventList);

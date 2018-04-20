@@ -15,6 +15,7 @@ import InviteForm from './InviteForm';
 import EventList from './EventList';
 import EventForm from './EventForm';
 import Events from './Event';
+import Footer from './Footer';
 
 class App extends Component {
   render() {
@@ -36,6 +37,7 @@ class App extends Component {
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>
+        <Footer />
       </div>
     );
   }

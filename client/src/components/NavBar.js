@@ -3,7 +3,7 @@ import { Menu } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleLogout } from '../actions/auth';
-import SVG from 'react-inlinesvg';
+// import SVG from 'react-inlinesvg';
 import logo from '../images/logo_dpl-white.png';
 
 
