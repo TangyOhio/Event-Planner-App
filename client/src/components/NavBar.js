@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleLogout } from '../actions/auth';
 import SVG from 'react-inlinesvg';
+import logo from '../images/logo_dpl-white.png';
 
 
 class NavBar extends Component {
@@ -34,38 +35,19 @@ class NavBar extends Component {
 
   render() {
     return (
-      <div style={styles.navbar}>
+      <div class="main-nav">
         <Menu inverted pointing secondary>
-          <Link to='/'>
-            <Menu.Item name='Home'/>
-              <SVG viewBox='0 0 24 23' src="client/src/images/SVG/DPL-Mark.svg">
-                <img src="client/src/images/SVG/DPL-Mark.svg" />
-              </SVG>
-          </Link>
-          <Link to='/profile'>
-            <Menu.Item name='profile' />
-          </Link>
-          <Link to='/settings'>
-            <Menu.Item name='settings' />
-          </Link>
-          <Link to='/eventlist'>
-            <Menu.Item name='event list' />
-          </Link>
-          <Link to='/eventform'>
-            <Menu.Item name='event form' />
-          </Link>
+        <Link to='/' className="logo">
+          <img src={logo} width="300px" alt="" />
+        </Link>
+        <Link to='/profile'>Profile</Link>
+        <Link to='/settings'>Settings</Link>
+        <Link to='/eventlist'>Event List</Link>
+        <Link to='/eventform'>Event Form</Link>
           { this.rightNavs() }
         </Menu>
       </div>
     );
-  }
-}
-
-const styles = {
-  navbar: {
-    backgroundColor: "#53407A",
-    color: "white"
-
   }
 }
 
