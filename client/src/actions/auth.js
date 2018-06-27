@@ -88,3 +88,4 @@ export const validateToken = (callBack = () => {}) => {
       .catch(() => callBack());
   };
 };
+// This is the boss! No it's not...
