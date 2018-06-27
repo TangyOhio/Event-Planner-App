@@ -8,3 +8,5 @@ class User < ActiveRecord::Base
   has_many :rsvps, dependent: :destroy
   has_many :events, through: :rsvps
 end
+
+#Darlene Test Comment-Not to be deleted.
