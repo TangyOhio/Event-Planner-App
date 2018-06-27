@@ -17,6 +17,7 @@ import EventForm from './EventForm';
 import Events from './Event';
 import Footer from './Footer';
 
+// This will be split someday
 class App extends Component {
   render() {
     return (
