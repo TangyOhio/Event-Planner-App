@@ -29,8 +29,8 @@ class App extends Component {
             <Route exact path='/' component={Home} />
             <ProtectedRoute exact path='/profile' component={Profile} />
             <ProtectedRoute exact path='/Settings' component={Settings} />
-            <ProtectedRoute exact path='/eventlist' component={EventList} />
-            <Route exact path='/eventform' component={EventForm} />
+            <Route exact path='/eventlist' component={EventList} />
+            <ProtectedRoute exact path='/eventform' component={EventForm} />
             <ProtectedRoute exact path='/inviteform' component={InviteForm} />
             <Route path="/event/:id" component={Events} />
             <AuthRoute exact path='/login' component={Login} />
