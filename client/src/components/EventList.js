@@ -49,39 +49,39 @@ class EventList extends React.Component {
 
 
   displayEvents = () => {
-  return this.state.events.map( event => {
-    return(
-
-      <Card color="purple">
-        <Image src={ event.event_image } />
-        <Card.Content>
-          <Card.Header>
-            <Link to='/events/:id'>
-              {event.title}
-            </Link>
-          </Card.Header>
-          <Card.Meta>
-            <span className='date'>
-              { event.date}
-            </span>
-          </Card.Meta>
-          <Card.Description>
-            {event.description}
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra textAlign='centered'>
-
-            { this.eventTime(event)}
-          <Divider/>
-          <Progress percent={event.xp} size='tiny'>
-            XP: {event.xp}
-          </Progress>
-        </Card.Content>
-        <Button onClick={() => this.handleRSVP(event.id)}>Register</Button>
-      </Card>
-    )
-  })
-}
+    return this.state.events.map( event => {
+      return(
+      
+        <Card color="purple">
+          <Image src={ event.event_image } />
+          <Card.Content>
+            <Card.Header>
+              <Link to='/events/:id'>
+                {event.title}
+              </Link>
+            </Card.Header>
+            <Card.Meta>
+              <span className='date'>
+                { event.date}
+              </span>
+            </Card.Meta>
+            <Card.Description>
+              {event.description}
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra textAlign='centered'>
+  
+              { this.eventTime(event)}
+            <Divider/>
+            <Progress percent={event.xp} size='tiny'>
+              XP: {event.xp}
+            </Progress>
+          </Card.Content>
+          <Button onClick={() => this.handleRSVP(event.id)}>Register</Button>
+        </Card>
+      )
+    })
+} 
 
   render() {
     let { events } = this.state;

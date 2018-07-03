@@ -14,7 +14,7 @@ import Settings from './Settings';
 import InviteForm from './InviteForm';
 import EventList from './EventList';
 import EventForm from './EventForm';
-import Events from './Event';
+import Events from './Events';
 import Footer from './Footer';
 
 // This will be split someday
