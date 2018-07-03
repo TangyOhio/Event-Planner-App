@@ -14,7 +14,7 @@ import Settings from './Settings';
 import InviteForm from './InviteForm';
 import EventList from './EventList';
 import EventForm from './EventForm';
-import Events from './Events';
+import Event from './Event';
 import Footer from './Footer';
 
 // This will be split someday
@@ -27,12 +27,12 @@ class App extends Component {
         <FetchUser>
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route exact path='/eventlist' component={EventList} />
+            <Route exact path='/events/:id' component={Event} />
             <ProtectedRoute exact path='/profile' component={Profile} />
             <ProtectedRoute exact path='/Settings' component={Settings} />
-            <Route exact path='/eventlist' component={EventList} />
             <ProtectedRoute exact path='/eventform' component={EventForm} />
             <ProtectedRoute exact path='/inviteform' component={InviteForm} />
-            <Route path="/event/:id" component={Events} />
             <AuthRoute exact path='/login' component={Login} />
             <AuthRoute exact path='/register' component={Register} />
             <Route component={NoMatch} />

@@ -7,22 +7,16 @@ import {
   Header,
   Icon,
   Image,
-  List,
-  Menu,
-  Responsive,
   Segment,
-  Sidebar,
-  Visibility,
 } from 'semantic-ui-react'
-import Carousel from './Carousel';
+import './styles.css'
 
-  
+  // Home page for DPL Events
   class Home extends Component {
     
     render() {
     return (
-      <Segment basic style={{padding: 0}} className="wrapper">
-        <Carousel />
+      <Segment basic style={{ padding: 0 }} className="wrapper">
         <Container text>
           <Header
             as='h1'
@@ -129,5 +123,4 @@ import Carousel from './Carousel';
     )
   }
 }
-
-export default Home;
+export default Home

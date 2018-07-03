@@ -52,7 +52,7 @@ class Profile extends Component {
       return events.map( event => {
         if (rsvp.event_id === event.id) {
           return(
-            <Card>
+            <Card key={event.id}>
               <Card.Content>
                 <Card.Header>
                   {event.title}

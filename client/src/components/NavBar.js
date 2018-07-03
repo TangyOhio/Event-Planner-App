@@ -13,7 +13,7 @@ class NavBar extends Component {
 
     if (user.id) {
       return (
-        <Menu.Menu inverted position='right'>
+        <Menu.Menu inverted="true" position='right'>
           <Menu.Item
             name='Logout'
             onClick={() => dispatch(handleLogout(history))}
@@ -35,7 +35,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <div class="main-nav">
+      <div className="main-nav">
         <Menu inverted pointing secondary>
         <Link to='/' className="logo">
           <img src={logo} width="300px" alt="" />
