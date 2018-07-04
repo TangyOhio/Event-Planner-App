@@ -69,7 +69,7 @@ class Profile extends Component {
                 <Card.Description>
                   {event.description}
                 </Card.Description>
-                <Link to ={`/event/${event.id}`}>
+                <Link to ={`/events/${event.id}`}>
                   View Details
                 </Link>
               </Card.Content>
