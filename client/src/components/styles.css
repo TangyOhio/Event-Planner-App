@@ -34,7 +34,7 @@
 
 
 
-.carousel .control-arrow, .carousel.carousel-slider .control-arrow {
+/* .carousel .control-arrow, .carousel.carousel-slider .control-arrow {
   -webkit-transition: all 0.25s ease-in;
   -moz-transition: all 0.25s ease-in;
   -ms-transition: all 0.25s ease-in;
@@ -267,4 +267,4 @@ width: 100%; }
 }
 .carousel:hover .slide .legend {
   opacity: 1; 
-}
+} */
