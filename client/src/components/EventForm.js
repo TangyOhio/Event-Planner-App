@@ -1,35 +1,40 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { Header } from 'semantic-ui-react';
+import React, { Component } from 'react'
+import axios from 'axios'
+import { setFlash } from '../reducers/flash'
+import { connect } from 'react-redux'
+import { setHeaders } from '../reducers/headers'
 
 class EventForm extends React.Component {
-  defaultValues = { title: '', category: '', description: '', date: '', start_time: '', end_time: '', private_event: '', event_image: '' }
+  defaultValues = { title: '', category: '', description: '', date: '', start_time: '', end_time: '', private_event: '', event_image: ''}
   state = {...this.defaultValues}
 
   submit = (event) => {
-    let { events } = this.state
+    const { dispatch } = this.props
     axios.post('/api/events', { event } )
       .then( res => {
-        console.log(res.data)
+        dispatch(setHeaders(res.headers))
+        dispatch(setFlash('You Successfully Created an Event', 'green'))
     }).catch( err => {
-        console.log(err)
+      dispatch(setHeaders(err.headers))
+      dispatch(setFlash('Oops Event ded', 'red'))
     })
   } 
 
   handleSubmit = (e) => {
-    e.preventDefault();
-    let event = { ...this.state }
+    e.preventDefault()
+    const { account } = this.props
+    let event = { ...this.state, user_id: account.id  }
     this.submit(event)
     this.setState({ ...this.defaultValues })
   }
 
   handleChange = (e) => {
-    let { target: { id, value }} = e;
+    let { target: { id, value }} = e
     this.setState({ [id]: value })
   }
 
   render() {
-    let { title, category, description, date, start_time, end_time, private_event, event_image } = this.state;
+    let { title, category, description, date, start_time, end_time, private_event, event_image } = this.state
     return (
       <form onSubmit={this.handleSubmit}>
         <input
@@ -97,4 +102,10 @@ class EventForm extends React.Component {
   }
 }
 
-export default EventForm;
+const mapStateToProps = (state) => {
+  return {
+    account: state.user
+  }
+}
+
+export default connect(mapStateToProps)(EventForm)

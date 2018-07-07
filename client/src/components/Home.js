@@ -60,12 +60,6 @@ import './styles.css'
                   </p>
                 </Grid.Column>
                 <Grid.Column floated='right' width={6}>
-                  <Image
-                    bordered
-                    rounded
-                    size='large'
-                    src='/assets/images/wireframe/white-image.png'
-                  />
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>
@@ -85,7 +79,6 @@ import './styles.css'
                 <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                   <Header as='h3' style={{ fontSize: '2em' }}>"I shouldn't have gone with their competitor."</Header>
                   <p style={{ fontSize: '1.33em' }}>
-                    <Image avatar src='/assets/images/avatar/large/nan.jpg' />
                     <b>Nan</b> Chief Fun Officer Acme Toys
                   </p>
                 </Grid.Column>

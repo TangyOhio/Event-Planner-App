@@ -34,8 +34,8 @@ class Event extends React.Component {
           
             <Grid.Column width={6}>
               <h5>{ event.date }</h5>
-              <h1>{event.title}</h1>
-              <h4>{event.category}</h4>
+              <h1>{ event.title }</h1>
+              <h4>{ event.category }</h4>
               
               <RSVPButton event={event} />
             </Grid.Column>
@@ -68,7 +68,7 @@ class Event extends React.Component {
       </Segment>
      
     )
- }
+  }
 }
 
 export default Event
