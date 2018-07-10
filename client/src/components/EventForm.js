@@ -68,15 +68,15 @@ class EventForm extends React.Component {
         />
         <br />
         <input
-          type="time"
           id="start_time"
+          placeholder="Start Time"
           value={start_time}
           onChange={this.handleChange}
         />
         <br />
         <input
-          type="time"
           id="end_time"
+          placeholder="End Time"
           value={end_time}
           onChange={this.handleChange}
         />

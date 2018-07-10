@@ -3,6 +3,8 @@ import axios from 'axios'
 import { Card, Grid, Image, Icon, Divider, Progress } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import RSVPButton from './RSVPButton'
+import MyCalendar from './MyCalendar'
+import moment from 'moment'
 
 class EventList extends React.Component {
   state = { events: [] }
@@ -11,7 +13,7 @@ class EventList extends React.Component {
   componentDidMount() {
     axios.get('/api/events')
       .then(res => {
-        console.log(res)
+        console.log(res.data)
         this.setState({ events: res.data })
       }).catch(err => {
         console.log(err)
@@ -40,8 +42,7 @@ class EventList extends React.Component {
     let { events } = this.state
     return events.map( event => {
       return(
-      
-        <Card key={event.id} color="purple">
+        <Card key={event.id} color='purple'>
           <Image src={ event.event_image } />
 
           <Card.Content>
@@ -78,9 +79,21 @@ class EventList extends React.Component {
     })
   } 
 
+  formatEvents = (events) => {
+    return events.map(event => {
+      return{
+        start: moment(`${event.date}`).format('dddd, MM DD YY, h a'),
+        end: moment(`${event.date}`).add(1, "days").format('dddd, MM DD YY, h a'),
+        title: event.title
+      }
+    })
+  }
+
   render() {
     return (
       <div>
+        <MyCalendar events={this.formatEvents(this.state.events)} />
+        {console.log(this.formatEvents(this.state.events))}
         <h1>Event List</h1>
         <Card.Group stackable itemsPerRow={3}>
           {this.displayEvents()}

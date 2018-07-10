@@ -6,7 +6,6 @@ import {
   Grid,
   Header,
   Icon,
-  Image,
   Segment,
 } from 'semantic-ui-react'
 import './styles.css'
