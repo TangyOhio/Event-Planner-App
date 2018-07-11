@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Header, Card, Grid, Image, Button } from 'semantic-ui-react';
 import Segment from 'semantic-ui-react/dist/commonjs/elements/Segment/Segment';
-import EventList from './EventList';
 import axios from 'axios';
 
 class Profile extends Component {
@@ -11,14 +10,13 @@ class Profile extends Component {
   componentDidMount() {
     axios.get('/api/rsvps')
       .then( res => {
-        console.log(res)
         this.setState({ rsvps: res.data })
     }).catch(err => {
         console.log(err)
     })
+
     axios.get('/api/events')
       .then( res => {
-        console.log(res)
         this.setState({ events: res.data })
     }).catch(err => {
         console.log(err)
@@ -81,7 +79,7 @@ class Profile extends Component {
               </Button>
             </Card>
           )
-        }
+        } else return null
       })
     })
   }

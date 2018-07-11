@@ -13,7 +13,6 @@ class EventList extends React.Component {
   componentDidMount() {
     axios.get('/api/events')
       .then(res => {
-        console.log(res.data)
         this.setState({ events: res.data })
       }).catch(err => {
         console.log(err)
@@ -82,8 +81,8 @@ class EventList extends React.Component {
   formatEvents = (events) => {
     return events.map(event => {
       return{
-        start: moment(`${event.date}`).format('dddd, MM DD YY, h a'),
-        end: moment(`${event.date}`).add(1, "days").format('dddd, MM DD YY, h a'),
+        start: moment(`${event.date}`).format(),
+        end: moment(`${event.date}`).add(1, "days").format(),
         title: event.title
       }
     })
@@ -92,8 +91,7 @@ class EventList extends React.Component {
   render() {
     return (
       <div>
-        <MyCalendar events={this.formatEvents(this.state.events)} />
-        {console.log(this.formatEvents(this.state.events))}
+        {this.state.events.length && <MyCalendar events={this.formatEvents(this.state.events)} />}
         <h1>Event List</h1>
         <Card.Group stackable itemsPerRow={3}>
           {this.displayEvents()}

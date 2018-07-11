@@ -3,7 +3,6 @@ import axios from 'axios'
 import {
  Grid,
  Image,
- Button,
  Segment
 } from 'semantic-ui-react'
 import RSVPButton from './RSVPButton';
@@ -14,7 +13,6 @@ class Event extends React.Component {
   componentDidMount() {
     axios.get(`/api/events/${this.props.match.params.id}`)
       .then( res => {
-        console.log(res)
         this.setState({ event: res.data })
       }).catch( err => {
         console.log(err)

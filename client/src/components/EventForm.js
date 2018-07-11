@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import axios from 'axios'
 import { setFlash } from '../reducers/flash'
 import { connect } from 'react-redux'

@@ -1,36 +1,40 @@
 import React from 'react'
-import Calendar from 'react-big-calendar'
+import BigCalendar from 'react-big-calendar'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import moment from 'moment'
 
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
-Calendar.momentLocalizer(moment) // or globalizeLocalizer
+BigCalendar.momentLocalizer(moment) // or globalizeLocalizer
 
+let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
 
 class MyCalendar extends React.Component {
   state = { newEvents: [] }
 
   componentDidMount() {
+    console.log(this.props.events)
     this.setState({ newEvents: this.props.events })
-    console.log(this.state.newEvents)
   }
   
   showCal = () => (
-    <Calendar
+    <BigCalendar
       events={this.state.newEvents}
       defaultDate={new Date()}
+      views={allViews}
       defaultView='month'
+      step={60}
       style={{ height: '100vh' }}
       showMultiDayTimes
     />
   )
 
   render() {
-    console.log(this.props)
-    return (
-      this.showCal()
-    )
+    if (this.state.newEvents.length) {
+      return (
+        this.showCal()
+      )
+    } else return null
   }
 
 }

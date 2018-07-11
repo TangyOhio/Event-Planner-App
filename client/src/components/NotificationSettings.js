@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-import { Form, Grid,Button } from 'semantic-ui-react';
+import React from 'react';
+import { Button } from 'semantic-ui-react';
 
   //this code pertains to the enable/disable buttons in notification setting tab
-  
-
   
   class NotificationSettings extends React.Component{
     state = { active: false, emailActive: false, googleCalendarActive: false }
