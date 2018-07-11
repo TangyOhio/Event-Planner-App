@@ -87,7 +87,7 @@ class Profile extends Component {
   render() {
     return (
       <Segment>
-        <Header as='h1' textAlign='center'>Profile</Header>
+        <Header as='h1' textAlign='center'>RSVPs</Header>
         <Card.Group stackable itemsPerRow={3}>
           {this.filterEvents()}
         </Card.Group>
