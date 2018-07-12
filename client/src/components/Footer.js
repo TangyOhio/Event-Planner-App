@@ -4,12 +4,7 @@ import {
   Header,
   List,
   Segment,
-<<<<<<< HEAD
 } from 'semantic-ui-react'
-=======
-}
-  from 'semantic-ui-react'
->>>>>>> add store.js
 
   class Footer extends Component {
     render() {
