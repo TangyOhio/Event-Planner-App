@@ -1,9 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-import { setFlash } from '../reducers/flash'
+import { setFlash } from '../../reducers/flash'
 import { connect } from 'react-redux'
-import { setHeaders } from '../reducers/headers'
-import store from '../store'
+import { setHeaders } from '../../reducers/headers'
 
 class EventForm extends React.Component {
   defaultValues = { title: '', category: '', description: '', date: '', start_time: '', end_time: '', private_event: '', event_image: ''}

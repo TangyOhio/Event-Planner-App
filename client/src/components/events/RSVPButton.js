@@ -1,9 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import { Button } from 'semantic-ui-react'
-import { setFlash } from '../reducers/flash'
+import { setFlash } from '../../reducers/flash'
 import { connect } from 'react-redux'
-import { setHeaders } from '../reducers/headers'
+import { setHeaders } from '../../reducers/headers'
 
 
 class RSVPButton extends React.Component {

@@ -9,12 +9,12 @@ import ProtectedRoute from './ProtectedRoute';
 import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
-import Profile from './Profile';
-import Settings from './Settings';
-import InviteForm from './InviteForm';
-import EventList from './EventList';
-import EventForm from './EventForm';
-import Event from './Event';
+import Profile from './user/Profile';
+import Settings from './user/Settings';
+import InviteForm from './user/InviteForm';
+import EventList from './events/EventList';
+import EventForm from './events/EventForm';
+import Event from './events/Event';
 import Footer from './Footer';
 
 // This will be split someday
