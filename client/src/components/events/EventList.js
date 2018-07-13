@@ -1,28 +1,24 @@
-import React from 'react'
-import axios from 'axios'
+import React, { Fragment } from 'react'
 import { Card, Button, Grid, Image, Icon, Divider, Progress } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import moment from 'moment'
 import RSVPButton from './RSVPButton'
 import MyCalendar from './MyCalendar'
-import moment from 'moment'
+import { getEvents, removeEvent } from '../../reducers/events';
 
 class EventList extends React.Component {
-  state = { events: [] }
 
-  deleteEvent = (id) => {
-    const { events } = this.state
-    axios.delete(`/api/events/${id}`)
-      .then(this.setState({ events: events.filter(i => i.id !== id) }))
-  }
-
-  // When the page is loaded, get all events from the database and throw it in state
+  // When the page is loaded, get all events from the database and throw it in the redux store
   componentDidMount() {
-    axios.get('/api/events')
-      .then(res => {
-        this.setState({ events: res.data })
-      }).catch(err => {
-        console.log(err)
-      })
+    const { dispatch } = this.props
+    dispatch(getEvents())
+  }
+  
+  // The Function that deletes the event
+  deleteEvent = (id) => {
+    const { dispatch } = this.props
+    dispatch(removeEvent(id))
   }
 
   // TODO Figure out what this is supposed to do
@@ -44,7 +40,7 @@ class EventList extends React.Component {
 
   // A function that returns the events laid out all pretty like and such
   displayEvents = () => {
-    let { events } = this.state
+    let { events } = this.props
     return events.map( event => {
       return(
         <Card key={event.id} color='purple'>
@@ -89,6 +85,7 @@ class EventList extends React.Component {
     })
   } 
 
+  // The function that formats the dates to be tossed in the calendar
   formatEvents = (events) => {
     return events.map(event => {
       return{
@@ -101,17 +98,19 @@ class EventList extends React.Component {
 
   render() {
     return (
-      <div>
-
-
-        {this.state.events.length && <MyCalendar events={this.formatEvents(this.state.events)} />}
+      <Fragment>
+        {this.props.events.length && <MyCalendar events={this.formatEvents(this.props.events)} />}
         <h1>Event List</h1>
         <Card.Group stackable itemsPerRow={3}>
           {this.displayEvents()}
         </Card.Group>
-      </div>
+      </Fragment>
     )
   }
 }
 
-export default EventList
+const mapStateToProps = (state) => {
+  return { events: state.events }
+}
+
+export default connect(mapStateToProps)(EventList)

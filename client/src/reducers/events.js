@@ -1,12 +1,10 @@
+import axios from 'axios'
 
-export const addEvent = (event) => {
-  return (dispatch) => {
-    axios.post('/api/events', { event })
-      .then(res => {
-        dispatch({ type: ADD_EVENT, event: res.data, headers: res.headers })
-      })
-  }
-}
+const EVENTS = 'EVENTS'
+const ADD_EVENT = 'ADD_EVENT'
+const REMOVE_EVENT = 'REMOVE_EVENT'
+const UPDATE_EVENT = 'UPDATE_EVENT'
+
 
 export const getEvents = () => {
   return (dispatch) => {
@@ -17,26 +15,47 @@ export const getEvents = () => {
   }
 }
 
-export const deleteEvent = (id) => {
+export const addEvent = (event) => {
+  return (dispatch) => {
+    axios.post('/api/events', { event })
+      .then(res => {
+        dispatch({ type: ADD_EVENT, event: res.data, headers: res.headers })
+      })
+  }
+}
+
+// THIS DOESN'T WORK YET
+export const updateEvent = id => {
   return (dispatch) => {
     axios.put(`/api/events/${id}`)
       .then(res => {
-        dispatch({ type: DELETE_EVENT, id, headers: res.headers })
+        dispatch({ type: UPDATE_EVENT, event: res.data, headers: res.headers })
+      })
+  }
+}
+
+export const removeEvent = (id) => {
+  return (dispatch) => {
+    axios.delete(`/api/events/${id}`)
+      .then(res => {
+        dispatch({ type: REMOVE_EVENT, id, headers: res.headers })
       })
   }
 }
 
 const events = (state = [], action) => {
   switch (action.type) {
-    case 'EVENTS':
+    case EVENTS:
       return action.events
-    case 'ADD_EVENT':
-      return [action.event, ...state];
-    case 'DELETE_EVENT':
-      return [action.event]
+    case ADD_EVENT:
+      return [action.event, ...state]
+    case UPDATE_EVENT:
+      return state
+    case REMOVE_EVENT:
+      return state.filter(e => e.id !== action.id)
     default:
       return state
   }
 }
 
-export default events;
+export default events

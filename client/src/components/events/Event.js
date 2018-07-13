@@ -10,13 +10,12 @@ import RSVPButton from './RSVPButton';
 
 
 class Event extends React.Component {
- state = { event: {} }
+  state = { event: {} }
 
 
- deleteEvent = (id) => {
-  const { events } = this.state
-  axios.delete(`/api/events/${id}`)
-    .then(this.props.history.push('/eventlist'))}
+  deleteEvent = (id) => {
+    axios.delete(`/api/events/${id}`)
+      .then(this.props.history.push('/eventlist'))}
 
 
   componentDidMount() {

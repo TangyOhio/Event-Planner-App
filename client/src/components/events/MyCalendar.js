@@ -5,7 +5,7 @@ import moment from 'moment'
 
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
-BigCalendar.momentLocalizer(moment) // or globalizeLocalizer
+BigCalendar.momentLocalizer(moment)
 
 let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
 
