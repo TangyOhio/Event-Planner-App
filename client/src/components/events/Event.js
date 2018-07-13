@@ -2,13 +2,22 @@ import React from 'react'
 import axios from 'axios'
 import {
  Grid,
+ Button,
  Image,
  Segment
 } from 'semantic-ui-react'
 import RSVPButton from './RSVPButton';
 
+
 class Event extends React.Component {
  state = { event: {} }
+
+
+ deleteEvent = (id) => {
+  const { events } = this.state
+  axios.delete(`/api/events/${id}`)
+    .then(this.props.history.push('/eventlist'))}
+
 
   componentDidMount() {
     axios.get(`/api/events/${this.props.match.params.id}`)
@@ -60,6 +69,10 @@ class Event extends React.Component {
                 Time: {event.start_time} - {event.end_time}
               </p>
             </Grid.Column>
+
+            <Button onClick={() => this.deleteEvent(event.id)} color='red' >
+              Remove Event
+              </Button>
           
           </Grid.Row>
         </Grid>

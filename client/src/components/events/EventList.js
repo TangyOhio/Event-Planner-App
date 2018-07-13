@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Card, Grid, Image, Icon, Divider, Progress } from 'semantic-ui-react'
+import { Card, Button, Grid, Image, Icon, Divider, Progress } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import RSVPButton from './RSVPButton'
 import MyCalendar from './MyCalendar'
@@ -8,6 +8,12 @@ import moment from 'moment'
 
 class EventList extends React.Component {
   state = { events: [] }
+
+  deleteEvent = (id) => {
+    const { events } = this.state
+    axios.delete(`/api/events/${id}`)
+      .then(this.setState({ events: events.filter(i => i.id !== id) }))
+  }
 
   // When the page is loaded, get all events from the database and throw it in state
   componentDidMount() {
@@ -73,6 +79,11 @@ class EventList extends React.Component {
           </Card.Content>
 
           <RSVPButton event={event} />
+          <Button onClick={() => this.deleteEvent(event.id)} color='red' >
+              Remove Event
+              </Button>
+
+
         </Card>
       )
     })
@@ -91,6 +102,8 @@ class EventList extends React.Component {
   render() {
     return (
       <div>
+
+
         {this.state.events.length && <MyCalendar events={this.formatEvents(this.state.events)} />}
         <h1>Event List</h1>
         <Card.Group stackable itemsPerRow={3}>
