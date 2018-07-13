@@ -1,22 +1,25 @@
 import styled from 'styled-component';
-import ColorPalette from './ColorPalette';
+import ColorPalette from './styles/ColorPalette';
 
-export const HomeBasic = styled.homeb`
+//Still working on this. These are all placeholders right now.
+
+
+export const HomeBasic = styled.hb`
   padding: ${props => props.padding || '10px' };
   background-color: ${props => props.backgroundColor || ColorPalette.lightBlue}
   text-align: center;
 `
-export const EventsBasic = styled.eventb`
+export const EventsBasic = styled.eb`
   padding: ${props => props.padding || '10px' };
   background-color: ${props => props.backgroundColor || ColorPalette.lightBlue}
   text-align: center;
 `
-export const UserBasic = styled.userb`
+export const UserBasic = styled.ub`
   padding: ${props => props.padding || '10px' };
   background-color: ${props => props.backgroundColor || ColorPalette.lightBlue}
   text-align: center;
 `
-export const AdminBasic = styled.td`
+export const AdminBasic = styled.ab`
   padding: ${props => props.padding || '10px' };
   background-color: ${props => props.backgroundColor || ColorPalette.lightBlue}
   text-align: center;
