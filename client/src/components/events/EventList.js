@@ -73,11 +73,12 @@ class EventList extends React.Component {
           </Card.Content>
 
           <RSVPButton event={event} />
+          <Button onClick={() => this.props.history.push( `/edit/${event.id}` ) }  color='green' >
+            Edit Event
+          </Button>
           <Button onClick={() => this.deleteEvent(event.id)} color='red' >
-              Remove Event
-              </Button>
-
-
+            Remove Event
+          </Button>
         </Card>
       )
     })

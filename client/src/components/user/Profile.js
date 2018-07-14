@@ -24,8 +24,9 @@ class Profile extends Component {
   }
 
   handleConfirm = (id) => {
+    const { rsvps } = this.state
     axios.delete(`/api/rsvps/${id}`)
-    window.location.reload()    
+      .then(this.setState({ rsvps: rsvps.filter(r => r.id !== id) }))
   }
 
   eventTime = (event) => {

@@ -24,10 +24,9 @@ export const addEvent = (event) => {
   }
 }
 
-// THIS DOESN'T WORK YET
-export const updateEvent = id => {
+export const updateEvent = (event) => {
   return (dispatch) => {
-    axios.put(`/api/events/${id}`)
+    axios.put(`/api/events/${event.id}`, { event })
       .then(res => {
         dispatch({ type: UPDATE_EVENT, event: res.data, headers: res.headers })
       })
@@ -50,7 +49,11 @@ const events = (state = [], action) => {
     case ADD_EVENT:
       return [action.event, ...state]
     case UPDATE_EVENT:
-      return state
+      return state.map(event => {
+        if (event.id === action.event.id)
+          return action.event
+        return event
+      })
     case REMOVE_EVENT:
       return state.filter(e => e.id !== action.id)
     default:
