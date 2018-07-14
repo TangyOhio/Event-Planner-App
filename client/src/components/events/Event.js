@@ -7,6 +7,8 @@ import {
  Segment
 } from 'semantic-ui-react'
 import RSVPButton from './RSVPButton';
+import { connect } from 'react-redux'
+import { removeEvent } from '../../reducers/events';
 
 
 class Event extends React.Component {
@@ -14,17 +16,17 @@ class Event extends React.Component {
 
 
   deleteEvent = (id) => {
-    axios.delete(`/api/events/${id}`)
-      .then(this.props.history.push('/eventlist'))}
+    const { dispatch } = this.props
+    dispatch(removeEvent(id))
+    this.props.history.push('/eventlist')
+  }
 
 
   componentDidMount() {
     axios.get(`/api/events/${this.props.match.params.id}`)
       .then( res => {
         this.setState({ event: res.data })
-      }).catch( err => {
-        console.log(err)
-    })
+      })
   }
 
   render() {
@@ -71,7 +73,7 @@ class Event extends React.Component {
 
             <Button onClick={() => this.deleteEvent(event.id)} color='red' >
               Remove Event
-              </Button>
+            </Button>
           
           </Grid.Row>
         </Grid>
@@ -81,4 +83,4 @@ class Event extends React.Component {
   }
 }
 
-export default Event
+export default connect()(Event)
