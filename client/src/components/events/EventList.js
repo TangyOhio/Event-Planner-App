@@ -1,10 +1,8 @@
 import React, { Fragment } from 'react'
-import { Card, Button, Grid, Image, Icon, Divider, Progress } from 'semantic-ui-react'
+import { Card, Header, Button, Grid, Image, Icon, Divider, Progress } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import moment from 'moment'
 import RSVPButton from './RSVPButton'
-import MyCalendar from './MyCalendar'
 import { getEvents, removeEvent } from '../../reducers/events';
 
 class EventList extends React.Component {
@@ -85,22 +83,10 @@ class EventList extends React.Component {
     })
   } 
 
-  // The function that formats the dates to be tossed in the calendar
-  formatEvents = (events) => {
-    return events.map(event => {
-      return{
-        start: moment(`${event.date}`).format(),
-        end: moment(`${event.date}`).add(1, "days").format(),
-        title: event.title
-      }
-    })
-  }
-
   render() {
     return (
       <Fragment>
-        {this.props.events.length && <MyCalendar events={this.formatEvents(this.props.events)} />}
-        <h1>Event List</h1>
+        <Header as='h1'>Event List</Header>
         <Card.Group stackable itemsPerRow={3}>
           {this.displayEvents()}
         </Card.Group>

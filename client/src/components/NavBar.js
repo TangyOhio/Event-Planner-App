@@ -44,6 +44,7 @@ class NavBar extends Component {
         <Link to='/settings'>Settings</Link>
         <Link to='/eventlist'>Event List</Link>
         <Link to='/eventform'>Event Form</Link>
+          <Link to='/calendar'>Calendar</Link>
           { this.rightNavs() }
         </Menu>
       </div>

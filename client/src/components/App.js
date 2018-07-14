@@ -15,6 +15,7 @@ import InviteForm from './user/InviteForm';
 import EventList from './events/EventList';
 import EventForm from './events/EventForm';
 import Event from './events/Event';
+import MyCalendar from './events/MyCalendar';
 import Footer from './Footer';
 
 // This will be split someday
@@ -29,6 +30,7 @@ class App extends Component {
             <Route exact path='/' component={Home} />
             <Route exact path='/eventlist' component={EventList} />
             <Route exact path='/events/:id' component={Event} />
+            <Route exact path='/calendar' component={MyCalendar} />
             <ProtectedRoute exact path='/profile' component={Profile} />
             <ProtectedRoute exact path='/Settings' component={Settings} />
             <ProtectedRoute exact path='/eventform' component={EventForm} />

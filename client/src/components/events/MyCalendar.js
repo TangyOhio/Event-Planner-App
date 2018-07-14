@@ -2,6 +2,8 @@ import React from 'react'
 import BigCalendar from 'react-big-calendar'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import moment from 'moment'
+import { connect } from 'react-redux'
+import { getEvents } from '../../reducers/events';
 
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
@@ -13,13 +15,24 @@ class MyCalendar extends React.Component {
   state = { newEvents: [] }
 
   componentDidMount() {
-    console.log(this.props.events)
-    this.setState({ newEvents: this.props.events })
+    const { dispatch } = this.props
+    dispatch(getEvents())
+  }
+
+  // The function that formats the dates to be tossed in the calendar
+  formatEvents = (events) => {
+    return events.map(event => {
+      return {
+        start: moment(`${event.date}`).format(),
+        end: moment(`${event.date}`).add(1, "days").format(),
+        title: event.title
+      }
+    })
   }
   
   showCal = () => (
     <BigCalendar
-      events={this.state.newEvents}
+      events={this.formatEvents(this.props.events)}
       defaultDate={new Date()}
       views={allViews}
       defaultView='month'
@@ -30,7 +43,7 @@ class MyCalendar extends React.Component {
   )
 
   render() {
-    if (this.state.newEvents.length) {
+    if (this.props.events.length) {
       return (
         this.showCal()
       )
@@ -39,4 +52,8 @@ class MyCalendar extends React.Component {
 
 }
 
-export default MyCalendar
+const mapStateToProps = (state) => {
+  return { events: state.events }
+}
+
+export default connect(mapStateToProps)(MyCalendar)
