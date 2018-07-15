@@ -14,6 +14,7 @@ class EventForm extends React.Component {
       .then( res => {
         dispatch(setHeaders(res.headers))
         dispatch(setFlash('You Successfully Created an Event', 'green'))
+        this.props.history.push('/profile')
     }).catch( err => {
       dispatch(setHeaders(err.headers))
       dispatch(setFlash('Oops Event ded', 'red'))

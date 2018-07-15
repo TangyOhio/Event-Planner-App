@@ -5,7 +5,7 @@ import Segment from 'semantic-ui-react/dist/commonjs/elements/Segment/Segment';
 import axios from 'axios';
 
 class Profile extends Component {
-  state = { events: [], rsvps: [] }
+  state = { events: [], rsvps: [], accounts: [] }
 
   componentDidMount() {
     axios.get('/api/rsvps')
@@ -21,7 +21,16 @@ class Profile extends Component {
     }).catch(err => {
         console.log(err)
     })
+    
+    axios.get('/user')
+    .then( res => {
+      this.setState({ user: res.data })
+  }).catch(err => {
+      console.log(err)
+  })
   }
+
+  
 
   handleConfirm = (id) => {
     const { rsvps } = this.state
@@ -45,7 +54,7 @@ class Profile extends Component {
     )
   }
 
-  filterEvents = () => {
+  filterMyRSVP = () => {
     const {events, rsvps} = this.state;
     return rsvps.map( rsvp => {
       return events.map( event => {
@@ -85,16 +94,63 @@ class Profile extends Component {
     })
   }
 
+
+   filterMyEvents = () => {
+    const {events, users} = this.state;
+    return users.map( user => {
+      return events.map( event => {
+        if (user.event_id === event.id) {
+          return(
+            <Card key={event.id}>
+              <Card.Content>
+                <Card.Header>
+                  {event.title}
+                  <hr />
+                  {event.category}
+                </Card.Header>
+                <Grid>
+                  <Grid.Row>
+                    <Grid.Column width={16}>
+                      <Image src={ event.event_image } />
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+                <Card.Description>
+                  {event.description}
+                </Card.Description>
+                <Link to ={`/events/${event.id}`}>
+                  View Details
+                </Link>
+              </Card.Content>
+              <Card.Content extra>
+                { this.eventTime(event)}
+              </Card.Content>
+            </Card>
+          )
+        } else return null
+      })
+    })
+  }
+
+
+
+
   render() {
     return (
       <Segment>
         <Header as='h1' textAlign='center'>RSVPs</Header>
         <Card.Group stackable itemsPerRow={3}>
-          {this.filterEvents()}
+          {this.filterMyRSVP()}
         </Card.Group>
+        <Header as='h1' textAlign='center'>My Events</Header>
+        {/* <Card.Group stackable itemsPerRow={3}>
+          {this.filterMyEvents()}
+        </Card.Group> */}
       </Segment>
     );
   }
 }
+
+
 
 export default Profile;

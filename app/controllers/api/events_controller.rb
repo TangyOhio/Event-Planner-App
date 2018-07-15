@@ -9,6 +9,7 @@ class Api::EventsController < ApplicationController
     render json: @event
   end
 
+
   def create
     event = Event.new(event_params)
 
