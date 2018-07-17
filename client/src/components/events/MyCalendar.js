@@ -9,10 +9,7 @@ import { getEvents } from '../../reducers/events';
 // to the correct localizer.
 BigCalendar.momentLocalizer(moment)
 
-let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
-
 class MyCalendar extends React.Component {
-  state = { newEvents: [] }
 
   componentDidMount() {
     const { dispatch } = this.props
@@ -22,10 +19,13 @@ class MyCalendar extends React.Component {
   // The function that formats the dates to be tossed in the calendar
   formatEvents = (events) => {
     return events.map(event => {
+      const startDate = `${event.date.toString()}T0${event.start_time}:00`
+      const endDate = `${event.date.toString()}T0${event.end_time}:00`
       return {
-        start: moment(`${event.date}`).format(),
-        end: moment(`${event.date}`).add(1, "days").format(),
-        title: event.title
+        start: moment(`${startDate}`).format('MM DD YYYY HH:mm A'),
+        end: moment(`${endDate}`).format('MM DD YYYY HH:mm A'),
+        title: event.title,
+        id: event.id
       }
     })
   }
@@ -34,11 +34,9 @@ class MyCalendar extends React.Component {
     <BigCalendar
       events={this.formatEvents(this.props.events)}
       defaultDate={new Date()}
-      views={allViews}
-      defaultView='month'
-      step={60}
       style={{ height: '100vh' }}
       showMultiDayTimes
+      onSelectEvent={event => this.props.history.push(`/events/${event.id}`)}
     />
   )
 
