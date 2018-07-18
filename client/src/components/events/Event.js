@@ -2,31 +2,22 @@ import React from 'react'
 import axios from 'axios'
 import {
  Grid,
- Button,
  Image,
  Segment
 } from 'semantic-ui-react'
-import RSVPButton from './RSVPButton';
+import RSVPButton from './RSVPButton'
 import { connect } from 'react-redux'
-import { removeEvent } from '../../reducers/events';
+import CRUDButtons from './CRUDButtons'
 
 
 class Event extends React.Component {
   state = { event: {} }
 
-
-  deleteEvent = (id) => {
-    const { dispatch } = this.props
-    dispatch(removeEvent(id))
-    this.props.history.push('/eventlist')
-  }
-
-
   componentDidMount() {
     axios.get(`/api/events/${this.props.match.params.id}`)
-      .then( res => {
-        this.setState({ event: res.data })
-      })
+    .then( res => {
+      this.setState({ event: res.data })
+    })
   }
 
   render() {
@@ -57,16 +48,14 @@ class Event extends React.Component {
             </Grid.Column>
 
             <Grid.Column width={6}>
-              <h4>Date &amp Time</h4>
+              <h4>Date & Time</h4>
               <p>{event.date}</p>
               <p>
                 Time: {event.start_time} - {event.end_time}
               </p>
             </Grid.Column>
 
-            <Button onClick={() => this.deleteEvent(event.id)} color="red">
-              Remove Event
-            </Button>
+            <CRUDButtons event={event} />
           </Grid.Row>
         </Grid>
       </Segment>
@@ -74,4 +63,10 @@ class Event extends React.Component {
   }
 }
 
-export default connect()(Event)
+const mapStateToProps = (state) => {
+  return {
+    account: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Event)

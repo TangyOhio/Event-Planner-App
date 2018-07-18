@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react'
-import { Card, Header, Button, Grid, Image, Icon, Divider, Progress } from 'semantic-ui-react'
+import { Card, Header, Grid, Image, Icon, Divider, Progress } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import RSVPButton from './RSVPButton'
-import { getEvents, removeEvent } from '../../reducers/events';
+import CRUDButtons from './CRUDButtons'
+import { getEvents } from '../../reducers/events';
 
 class EventList extends React.Component {
 
@@ -11,12 +12,6 @@ class EventList extends React.Component {
   componentDidMount() {
     const { dispatch } = this.props
     dispatch(getEvents())
-  }
-  
-  // The function that deletes the event
-  deleteEvent = (id) => {
-    const { dispatch } = this.props
-    dispatch(removeEvent(id))
   }
 
   // Displays the time of the events
@@ -34,23 +29,6 @@ class EventList extends React.Component {
         </Grid.Row>
       </Grid>
     )
-  }
-
-  // Conditionally renders the edit or delete button based on whether or not a user made the event or is an admin
-  crudButtons = (event) => {
-    const { account } = this.props
-    if ( account.is_admin || account.id === event.user_id ) {
-      return (
-        <Fragment>
-          <Button onClick={() => this.props.history.push(`/edit/${event.id}`)} color="green">
-            Edit Event
-          </Button>
-          <Button onClick={() => this.deleteEvent(event.id)} color="red">
-            Remove Event
-          </Button>
-        </Fragment>
-      )
-    } else return null
   }
 
   // A function that returns the events laid out all pretty like and such
@@ -84,7 +62,7 @@ class EventList extends React.Component {
           </Card.Content>
 
           <RSVPButton event={event} />
-          {this.crudButtons(event)}
+          <CRUDButtons event={event} />
         </Card>
       )
     })

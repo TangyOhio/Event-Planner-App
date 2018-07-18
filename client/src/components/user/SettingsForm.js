@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { setFlash } from '../../reducers/flash'
@@ -89,9 +89,9 @@ class SettingsForm extends Component {
 
   render() {
     return (
-      <div>
+      <Fragment>
         {this.state.email && this.showForm()}
-      </div>
+      </Fragment>
     )
   }
 }

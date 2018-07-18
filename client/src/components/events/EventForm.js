@@ -1,8 +1,6 @@
 import React from 'react'
-import axios from 'axios'
-import { setFlash } from '../../reducers/flash'
 import { connect } from 'react-redux'
-import { setHeaders } from '../../reducers/headers'
+import { addEvent } from '../../reducers/events';
 
 class EventForm extends React.Component {
   defaultValues = { title: '', category: '', description: '', date: '', start_time: '', end_time: '', private_event: '', event_image: ''}
@@ -10,15 +8,8 @@ class EventForm extends React.Component {
 
   submit = (event) => {
     const { dispatch } = this.props
-    axios.post('/api/events', { event } )
-      .then( res => {
-        dispatch(setHeaders(res.headers))
-        dispatch(setFlash('You Successfully Created an Event', 'green'))
-        this.props.history.push('/profile')
-    }).catch( err => {
-      dispatch(setHeaders(err.headers))
-      dispatch(setFlash('Oops Event ded', 'red'))
-    })
+    dispatch(addEvent(event))
+    this.props.history.push('/profile')
   } 
 
   handleSubmit = (e) => {
