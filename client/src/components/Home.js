@@ -6,6 +6,7 @@ import {
   Grid,
   Header,
   Icon,
+  Menu,
   Segment,
 } from 'semantic-ui-react'
 import './styles.css'
@@ -16,7 +17,7 @@ import './styles.css'
     render() {
     return (
       <Segment basic style={{ padding: 0 }} className="wrapper">
-        <Container text>
+        {/* <Container text>
           <Header
             as='h1'
             content='Imagine-a-Company'
@@ -38,32 +39,31 @@ import './styles.css'
               marginTop: '0.5em',
             }}
           />
-          <Button primary size='huge'>
-            Get Started
-            <Icon name='right arrow' />
-          </Button>
-        </Container>
+        </Container> */}
         <Container>
           <Segment style={{ padding: '8em 0em' }} vertical>
             <Grid container stackable verticalAlign='middle'>
               <Grid.Row>
                 <Grid.Column width={8}>
-                  <Header as='h3' style={{ fontSize: '2em' }}>We Help Companies and Companions</Header>
+                  <Header as='h3' style={{ fontSize: '2em' }}>Get Nerdy With Us.</Header>
                   <p style={{ fontSize: '1.33em' }}>
-                    We can give your company superpowers to do things that they never thought possible. Let us delight
-                    your customers and empower your needs... through pure data analytics.
+                    Join us at our next event!
                   </p>
-                  <Header as='h3' style={{ fontSize: '2em' }}>We Make Bananas That Can Dance</Header>
+          <Button primary size='huge'>
+            Sign Up
+            {/* <Icon name='right arrow' /> */}
+          </Button>
+                  {/* <Header as='h3' style={{ fontSize: '2em' }}>We Make Bananas That Can Dance</Header>
                   <p style={{ fontSize: '1.33em' }}>
                     Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.
-                  </p>
+                  </p> */}
                 </Grid.Column>
                 <Grid.Column floated='right' width={6}>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column textAlign='center'>
-                  <Button size='huge'>Check Them Out</Button>
+                  {/* <Button size='huge'>Check Them Out</Button> */}
                 </Grid.Column>
               </Grid.Row>
             </Grid>

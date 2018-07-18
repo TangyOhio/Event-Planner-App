@@ -3,15 +3,14 @@
 .main-nav {
   color: "white";
   background-color: #53407a;
-}
-  .main-nav a{
-    color: #fff;
-  }
-.main-nav{
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
+.main-nav a{
+    color: #fff;
+ }
+
   .main-nav li {
     line-height: 80px;
     display: inline-block;
@@ -28,9 +27,7 @@
   background-color: #53407A!important;
   position: relative !important;
   padding: 5em 5% !important;
-  width:100% !important;
-  
- 
+  width:100% !important; 
 }
 
 
