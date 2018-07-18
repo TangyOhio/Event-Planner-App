@@ -74,11 +74,9 @@ class EventForm extends React.Component {
         />
         <br />
         <input 
-          type="file"
           id="event_image"
           value={event_image}
           onChange={this.handleChange} 
-          accept="image/*"
         />
         <br />
         <input 

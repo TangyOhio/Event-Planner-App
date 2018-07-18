@@ -55,7 +55,7 @@ class Event extends React.Component {
               </p>
             </Grid.Column>
 
-            <CRUDButtons event={event} />
+            <CRUDButtons event={event} history={this.props.history} />
           </Grid.Row>
         </Grid>
       </Segment>

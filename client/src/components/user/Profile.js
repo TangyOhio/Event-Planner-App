@@ -118,7 +118,7 @@ class Profile extends Component {
             <Card.Content extra>
               { this.eventTime(event)}
             </Card.Content>
-            <CRUDButtons event={event} />
+            <CRUDButtons event={event} history={this.props.history} />
           </Card>
         )
       } else return null

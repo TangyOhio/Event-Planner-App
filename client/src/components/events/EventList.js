@@ -62,7 +62,7 @@ class EventList extends React.Component {
           </Card.Content>
 
           <RSVPButton event={event} />
-          <CRUDButtons event={event} />
+          <CRUDButtons event={event} history={this.props.history} />
         </Card>
       )
     })

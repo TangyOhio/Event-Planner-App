@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { setFlash } from '../../reducers/flash'
 import { updateEvent } from '../../reducers/events'
 
 class EditForm extends React.Component {
@@ -13,9 +12,9 @@ class EditForm extends React.Component {
   }
 
   submit = (event) => {
-    const { dispatch } = this.props
+    const { dispatch, history } = this.props
     dispatch(updateEvent(event))
-    dispatch(setFlash('You Successfully Edited This Event', 'green'))
+    history.push(`/events/${event.id}`)
   }
 
   handleSubmit = (e) => {
