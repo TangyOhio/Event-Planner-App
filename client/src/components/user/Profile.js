@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { Header, Card, Grid, Image, Button } from 'semantic-ui-react';
 import Segment from 'semantic-ui-react/dist/commonjs/elements/Segment/Segment';
 import axios from 'axios';
+import {connect} from 'react-redux'
 
 class Profile extends Component {
-  state = { events: [], rsvps: [], accounts: [] }
+  state = { events: [], rsvps: [], }
 
   componentDidMount() {
     axios.get('/api/rsvps')
@@ -22,20 +23,14 @@ class Profile extends Component {
         console.log(err)
     })
     
-    axios.get('/user')
-    .then( res => {
-      this.setState({ user: res.data })
-  }).catch(err => {
-      console.log(err)
-  })
+ 
   }
 
   
 
   handleConfirm = (id) => {
-    const { rsvps } = this.state
     axios.delete(`/api/rsvps/${id}`)
-      .then(this.setState({ rsvps: rsvps.filter(r => r.id !== id) }))
+    window.location.reload()    
   }
 
   eventTime = (event) => {
@@ -95,16 +90,17 @@ class Profile extends Component {
   }
 
 
+
    filterMyEvents = () => {
-    const {events, users} = this.state;
-    return users.map( user => {
-      return events.map( event => {
-        if (user.event_id === event.id) {
+    const {events} = this.state;
+    const {account} = this.props;
+    return events.map( event => {
+        if (event.user_id === account.id) {
           return(
             <Card key={event.id}>
               <Card.Content>
                 <Card.Header>
-                  {event.title}
+                {event.title}
                   <hr />
                   {event.category}
                 </Card.Header>
@@ -129,11 +125,8 @@ class Profile extends Component {
           )
         } else return null
       })
-    })
+    
   }
-
-
-
 
   render() {
     return (
@@ -143,14 +136,20 @@ class Profile extends Component {
           {this.filterMyRSVP()}
         </Card.Group>
         <Header as='h1' textAlign='center'>My Events</Header>
-        {/* <Card.Group stackable itemsPerRow={3}>
+        <Card.Group stackable itemsPerRow={3}>
           {this.filterMyEvents()}
-        </Card.Group> */}
+        </Card.Group>
       </Segment>
     );
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    account: state.user
+  }
+}
 
 
-export default Profile;
+export default connect(mapStateToProps)(Profile)
+

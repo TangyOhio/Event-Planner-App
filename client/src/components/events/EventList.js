@@ -13,13 +13,13 @@ class EventList extends React.Component {
     dispatch(getEvents())
   }
   
-  // The Function that deletes the event
+  // The function that deletes the event
   deleteEvent = (id) => {
     const { dispatch } = this.props
     dispatch(removeEvent(id))
   }
 
-  // TODO Figure out what this is supposed to do
+  // Displays the time of the events
   eventTime = (event) => {
     return (
       <Grid centered>
@@ -34,6 +34,23 @@ class EventList extends React.Component {
         </Grid.Row>
       </Grid>
     )
+  }
+
+  // Conditionally renders the edit or delete button based on whether or not a user made the event or is an admin
+  crudButtons = (event) => {
+    const { account } = this.props
+    if ( account.is_admin || account.id === event.user_id ) {
+      return (
+        <Fragment>
+          <Button onClick={() => this.props.history.push(`/edit/${event.id}`)} color="green">
+            Edit Event
+          </Button>
+          <Button onClick={() => this.deleteEvent(event.id)} color="red">
+            Remove Event
+          </Button>
+        </Fragment>
+      )
+    } else return null
   }
 
   // A function that returns the events laid out all pretty like and such
@@ -67,12 +84,7 @@ class EventList extends React.Component {
           </Card.Content>
 
           <RSVPButton event={event} />
-          <Button onClick={() => this.props.history.push(`/edit/${event.id}`)} color="green">
-            Edit Event
-          </Button>
-          <Button onClick={() => this.deleteEvent(event.id)} color="red">
-            Remove Event
-          </Button>
+          {this.crudButtons(event)}
         </Card>
       )
     })
@@ -91,7 +103,10 @@ class EventList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { events: state.events }
+  return { 
+    events: state.events,
+    account: state.user
+  }
 }
 
 export default connect(mapStateToProps)(EventList)
