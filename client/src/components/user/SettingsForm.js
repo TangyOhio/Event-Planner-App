@@ -35,7 +35,7 @@ class SettingsForm extends Component {
   }
 
   showForm = () => {
-    let { email, name, nickname, image, is_admin } = this.state
+    let { email, name, nickname, image } = this.state
     return (
       <form onSubmit={this.handleSubmit}>
         <input
@@ -70,7 +70,6 @@ class SettingsForm extends Component {
         <Checkbox
           id="is_admin"
           placeholder='Name'
-          value={is_admin}
           onChange={() => this.setState({ is_admin: !this.state.is_admin })}
         />
         <br />

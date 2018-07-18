@@ -69,7 +69,7 @@ class Event extends React.Component {
             </Button>
           </Grid.Row>
         </Grid>
-      </Segment>;
+      </Segment>
     )
   }
 }

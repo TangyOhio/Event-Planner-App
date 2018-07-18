@@ -42,40 +42,41 @@ class EventList extends React.Component {
     return events.map( event => {
       return (
         <Card key={event.id} color="purple">
-            <Image src={event.event_image} height="200" width="400" />
+          <Image src={event.event_image} height="200" width="400" />
 
-            <Card.Content>
-              <Card.Header>
-                <Link to={`/events/${event.id}`}>{event.title}</Link>
-              </Card.Header>
+          <Card.Content>
+            <Card.Header>
+              <Link to={`/events/${event.id}`}>{event.title}</Link>
+            </Card.Header>
 
-              <Card.Meta>
-                <span className="date">{event.date}</span>
-              </Card.Meta>
+            <Card.Meta>
+              <span className="date">{event.date}</span>
+            </Card.Meta>
 
-              <Card.Description>{event.description}</Card.Description>
-            </Card.Content>
+            <Card.Description>{event.description}</Card.Description>
+          </Card.Content>
 
-            <Card.Content extra textAlign="center">
-              {this.eventTime(event)}
+          <Card.Content extra textAlign="center">
+            {this.eventTime(event)}
 
-              <Divider />
+            <Divider />
 
-              <Progress percent={event.xp} size="tiny">
-                XP: {event.xp}
-              </Progress>
-            </Card.Content>
+            <Progress percent={event.xp} size="tiny">
+              XP: {event.xp}
+            </Progress>
+          </Card.Content>
 
-            <RSVPButton event={event} />
-            <Button onClick={() => this.props.history.push(`/edit/${event.id}`)} color="green">
-              Edit Event
-            </Button>
-            <Button onClick={() => this.deleteEvent(event.id)} color="red">
-              Remove Event
-            </Button>
-          </Card>;
+          <RSVPButton event={event} />
+          <Button onClick={() => this.props.history.push(`/edit/${event.id}`)} color="green">
+            Edit Event
+          </Button>
+          <Button onClick={() => this.deleteEvent(event.id)} color="red">
+            Remove Event
+          </Button>
+        </Card>
+      )
     })
-  } 
+  }
 
   render() {
     return (
