@@ -22,10 +22,16 @@ class RSVPButton extends React.Component {
   }
 
   render() {
-    const { event } = this.props
-    return(
-      <Button onClick={() => this.handleRSVP(event.id)}>Register</Button>
-    )
+    const { event, account } = this.props
+    if (account.id) {
+      return (
+        <Button onClick={() => this.handleRSVP(event.id)}>Register</Button>
+      )
+    } else {
+      return (
+        <Button onClick={() => this.props.history.push(`/register`)}>Register to RSVP</Button>
+      )
+    }
   }
 }
 

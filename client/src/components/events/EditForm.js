@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { setFlash } from '../../reducers/flash'
-import { updateEvent } from '../../reducers/events';
+import { updateEvent } from '../../reducers/events'
 
 class EditForm extends React.Component {
   state = { title: '', category: '', description: '', date: '', start_time: '', end_time: '', private_event: '', event_image: '' }

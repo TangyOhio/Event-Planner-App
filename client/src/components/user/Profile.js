@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Header, Card, Grid, Image, Button } from 'semantic-ui-react';
+import { Header, Card, Grid, Image, Button, Divider } from 'semantic-ui-react';
 import Segment from 'semantic-ui-react/dist/commonjs/elements/Segment/Segment';
 import axios from 'axios';
 import {connect} from 'react-redux'
@@ -132,6 +132,7 @@ class Profile extends Component {
     return (
       <Segment>
         <Header as='h1' textAlign='center'>RSVPs</Header>
+        <Divider />
         <Card.Group stackable itemsPerRow={3}>
           {this.filterMyRSVP()}
         </Card.Group>

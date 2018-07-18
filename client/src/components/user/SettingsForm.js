@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { setFlash } from '../../reducers/flash'
@@ -7,11 +7,17 @@ import { Checkbox } from 'semantic-ui-react'
 
 // This code pertaines to the Account Information settings tab
 class SettingsForm extends Component {
-  state = { email: '', name: '', nickname: '', image: "", is_admin: false}
+  state = { email: '', name: '', nickname: '', image: "", is_admin: ""}
   
   componentDidMount() {
     const { account } = this.props
-    this.setState({ email: account.email, name: account.name, nickname: account.nickname, is_admin: account.is_admin, image: account.image })
+    this.setState({ 
+      email: account.email === null ? "" : account.email,
+      name: account.name === null ? "" : account.name, 
+      nickname: account.nickname === null ? "" : account.nickname, 
+      is_admin: account.is_admin === null ? false : account.is_admin, 
+      image: account.image === null ? "" : account.image 
+    })
   }
 
   submit = (user) => {
@@ -20,6 +26,7 @@ class SettingsForm extends Component {
       .then(res => {
         dispatch(setHeaders( res.headers ))
         dispatch(setFlash('You Successfully Updated Your Info', 'green'))
+        window.location.reload()
       })
   }
 
@@ -35,7 +42,7 @@ class SettingsForm extends Component {
   }
 
   showForm = () => {
-    let { email, name, nickname, image } = this.state
+    let { email, name, nickname, image, is_admin } = this.state
     return (
       <form onSubmit={this.handleSubmit}>
         <input
@@ -67,9 +74,11 @@ class SettingsForm extends Component {
           required
         />
         <br />
+        <p> Are you an admin? </p>
         <Checkbox
           id="is_admin"
           placeholder='Name'
+          checked={is_admin}
           onChange={() => this.setState({ is_admin: !this.state.is_admin })}
         />
         <br />
@@ -80,7 +89,9 @@ class SettingsForm extends Component {
 
   render() {
     return (
-      this.showForm()
+      <div>
+        {this.state.email && this.showForm()}
+      </div>
     )
   }
 }
