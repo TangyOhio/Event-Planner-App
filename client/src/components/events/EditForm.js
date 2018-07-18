@@ -31,7 +31,7 @@ class EditForm extends React.Component {
   }
 
   render() {
-    let { title, category, description, date, start_time, end_time, private_event } = this.state
+    let { title, category, description, date, start_time, event_image, end_time, private_event } = this.state
     return (
       <form onSubmit={this.handleSubmit}>
         <input
@@ -79,11 +79,9 @@ class EditForm extends React.Component {
         />
         <br />
         <input
-          type="file"
           id="event_image"
-          value={''}
+          value={event_image}
           onChange={this.handleChange}
-          accept="image/*"
         />
         <br />
         <input

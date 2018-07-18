@@ -32,53 +32,44 @@ class Event extends React.Component {
   render() {
     let { event } = this.state
     return (
-      <Segment className='ui container' vertical>
+      <Segment className="ui container" vertical>
         <Grid columns={16} divided>
           <Grid.Row>
-          
             <Grid.Column width={10}>
-              <Image src={event.event_image}/>
+              <Image src={event.event_image} height="200" width="400" />
             </Grid.Column>
-          
+
             <Grid.Column width={6}>
-              <h5>{ event.date }</h5>
-              <h1>{ event.title }</h1>
-              <h4>{ event.category }</h4>
-              
+              <h5>{event.date}</h5>
+              <h1>{event.title}</h1>
+              <h4>{event.category}</h4>
+
               <RSVPButton event={event} />
             </Grid.Column>
-          
           </Grid.Row>
         </Grid>
 
         <Grid columns={16}>
           <Grid.Row>
-
             <Grid.Column width={10}>
               <h4>Description</h4>
-              <p>
-                { event.description }
-              </p>
+              <p>{event.description}</p>
             </Grid.Column>
-            
+
             <Grid.Column width={6}>
               <h4>Date &amp Time</h4>
-              <p>
-                { event.date }
-              </p>
+              <p>{event.date}</p>
               <p>
                 Time: {event.start_time} - {event.end_time}
               </p>
             </Grid.Column>
 
-            <Button onClick={() => this.deleteEvent(event.id)} color='red' >
+            <Button onClick={() => this.deleteEvent(event.id)} color="red">
               Remove Event
             </Button>
-          
           </Grid.Row>
         </Grid>
-      </Segment>
-     
+      </Segment>;
     )
   }
 }
