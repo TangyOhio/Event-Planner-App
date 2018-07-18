@@ -14,7 +14,9 @@ class RSVPButton extends React.Component {
     axios.post('/api/rsvps', { rsvp })
       .then(res => {
         dispatch(setHeaders(res.headers))
-        dispatch(setFlash('You Successfully Registered', 'green'))
+        return (
+          alert("You successfully registered!")
+        ) 
       }).catch(err => {
         dispatch(setHeaders(err.headers))
         dispatch(setFlash('Error Registering', 'red'))
