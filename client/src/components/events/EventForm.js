@@ -60,6 +60,7 @@ class EventForm extends React.Component {
         />
         <br />
         <input
+          type="time"
           id="start_time"
           placeholder="Start Time"
           value={start_time}
@@ -67,6 +68,7 @@ class EventForm extends React.Component {
         />
         <br />
         <input
+          type="time"
           id="end_time"
           placeholder="End Time"
           value={end_time}
@@ -75,6 +77,7 @@ class EventForm extends React.Component {
         <br />
         <input 
           id="event_image"
+          placeholder="URL of Event Image"
           value={event_image}
           onChange={this.handleChange} 
         />
