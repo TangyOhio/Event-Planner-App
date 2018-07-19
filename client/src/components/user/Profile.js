@@ -91,6 +91,7 @@ class Profile extends Component {
   // Shows the events that the user created
   filterMyEvents = () => {
     const { account, events } = this.props
+    events.sort
     return events.map( event => {
       if (event.user_id === account.id) {
         return(

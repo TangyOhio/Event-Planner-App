@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import RSVPButton from './RSVPButton'
 import CRUDButtons from './CRUDButtons'
 import { getEvents } from '../../reducers/events';
+import moment from 'moment'
 
 class EventList extends React.Component {
 
@@ -31,10 +32,20 @@ class EventList extends React.Component {
     )
   }
 
+  date_sort_desc = function (date1, date2) {
+    // This is a comparison function that will result in dates being sorted in
+    // DESCENDING order.
+    if (date1 > date2) return -1;
+    if (date1 < date2) return 1;
+    return 0;
+  };
+
   // A function that returns the events laid out all pretty like and such
   displayEvents = () => {
     let { events } = this.props
+    events.sort(date_sort_desc);
     return events.map( event => {
+     if (moment(event.date).isAfter(moment()))
       return (
         <Card key={event.id} color="purple">
           <Image src={event.event_image} height="200" width="400" />
@@ -68,6 +79,45 @@ class EventList extends React.Component {
     })
   }
 
+  displayPastEvents = () => {
+    let { events } = this.props
+    events.sort
+    return events.map( event => {
+     if (moment(event.date).isBefore(moment()))
+      return (
+        <Card key={event.id} color="purple">
+          <Image src={event.event_image} height="200" width="400" />
+
+          <Card.Content>
+            <Card.Header>
+              <Link to={`/events/${event.id}`}>{event.title}</Link>
+            </Card.Header>
+
+            <Card.Meta>
+              <span className="date">{event.date}</span>
+            </Card.Meta>
+
+            <Card.Description>{event.description}</Card.Description>
+          </Card.Content>
+
+          <Card.Content extra textAlign="center">
+            {this.eventTime(event)}
+
+            <Divider />
+
+            <Progress percent={event.xp} size="tiny">
+              XP: {event.xp}
+            </Progress>
+          </Card.Content>
+
+          <RSVPButton event={event} />
+          <CRUDButtons event={event} history={this.props.history} />
+        </Card>
+      )
+    })
+  }
+
+
   render() {
     return (
       <Fragment>
@@ -75,6 +125,11 @@ class EventList extends React.Component {
         <Card.Group stackable itemsPerRow={3}>
           {this.displayEvents()}
         </Card.Group>
+        <Header as='h1'>See our past events</Header>
+        <Card.Group stackable itemsPerRow={3}>
+          {this.displayPastEvents()}
+        </Card.Group>
+
       </Fragment>
     )
   }
