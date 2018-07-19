@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Button,
   Container,
   Divider,
-  Grid,
   Header,
-  Icon,
-  Menu,
   Segment,
+
 } from 'semantic-ui-react'
 import './styles.css'
+import MyCalendar from './events/MyCalendar'
 
   // Home page for DPL Events
   class Home extends Component {
@@ -17,96 +17,48 @@ import './styles.css'
     render() {
     return (
       <Segment basic style={{ padding: 0 }} className="wrapper">
-        {/* <Container text>
-          <Header
-            as='h1'
-            content='Imagine-a-Company'
-            inverted
-            style={{
-              fontSize: '2em',
-              fontWeight: 'normal',
-              marginBottom: 0,
-              marginTop: '1.5em'
-            }}
-          />
-          <Header
-            as='h2'
-            content='Do whatever you want when you want to.'
-            inverted
-            style={{
-              fontSize: '1.5em',
-              fontWeight: 'normal',
-              marginTop: '0.5em',
-            }}
-          />
-        </Container> */}
         <Container>
-          <Segment style={{ padding: '8em 0em' }} vertical>
-            <Grid container stackable verticalAlign='middle'>
-              <Grid.Row>
-                <Grid.Column width={8}>
-                  <Header as='h3' style={{ fontSize: '2em' }}>Get Nerdy With Us.</Header>
-                  <p style={{ fontSize: '1.33em' }}>
-                    Join us at our next event!
-                  </p>
-          <Button primary size='huge'>
-            Sign Up
-            {/* <Icon name='right arrow' /> */}
-          </Button>
-                  {/* <Header as='h3' style={{ fontSize: '2em' }}>We Make Bananas That Can Dance</Header>
-                  <p style={{ fontSize: '1.33em' }}>
-                    Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.
-                  </p> */}
-                </Grid.Column>
-                <Grid.Column floated='right' width={6}>
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column textAlign='center'>
-                  {/* <Button size='huge'>Check Them Out</Button> */}
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Segment>
-          <Segment style={{ padding: '0em' }} vertical>
-            <Grid celled='internally' columns='equal' stackable>
-              <Grid.Row textAlign='center'>
-                <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                  <Header as='h3' style={{ fontSize: '2em' }}>"What a Company"</Header>
-                  <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
-                </Grid.Column>
-                <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                  <Header as='h3' style={{ fontSize: '2em' }}>"I shouldn't have gone with their competitor."</Header>
-                  <p style={{ fontSize: '1.33em' }}>
-                    <b>Nan</b> Chief Fun Officer Acme Toys
-                  </p>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Segment>
-          <Segment style={{ padding: '8em 0em' }} vertical>
-            <Container text>
-              <Header as='h3' style={{ fontSize: '2em' }}>Breaking The Grid, Grabs Your Attention</Header>
-              <p style={{ fontSize: '1.33em' }}>
-                Instead of focusing on content creation and hard work, we have learned how to master the art of doing
-                nothing by providing massive amounts of whitespace and generic content that can seem massive, monolithic
-                and worth your attention.
+          <Segment textAlign='center' style={{ padding: '5em 0em' }} vertical>
+            <Header as='h3' style={{ fontSize: '5em' }}>
+            Get Nerdy With Us.
+            </Header>
+              <p style={{ fontSize: '2em' }}>
+                Join us at our next event!
               </p>
-              <Button as='a' size='large'>Read More</Button>
-              <Divider
-                as='h4'
-                className='header'
-                horizontal
-                style={{ margin: '3em 0em', textTransform: 'uppercase' }}
-                >
-              </Divider>
-              <Header as='h3' style={{ fontSize: '2em' }}>Did We Tell You About Our Bananas?</Header>
-              <p style={{ fontSize: '1.33em' }}>
-                Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but it's really
-                true.
-                It took years of gene splicing and combinatory DNA research, but our bananas can really dance.
+            <Link to='/register'>
+              <Button primary size='huge'>
+                Sign Up to RSVP
+                {/* <Icon name='right arrow' /> */}
+              </Button>
+            </Link>
+          </Segment>
+        <Segment textAlign="center" style={{ padding: '8em 0em' }} vertical>
+          <Container text>
+              <Header as='h3' style={{ fontSize: '2em' }}>Upcoming Events</Header>
+              <p style={{ fontSize: '1.25em' }}>
+
+              <MyCalendar
+                view='week'
+              />
+
+{/*insert Calendar*/}
+
               </p>
-              <Button as='a' size='large'>I'm Still Quite Interested</Button>
+              <Button as='a' size='large' href="http://devpointlabs.com">
+              Learn More
+              </Button>
+                <Divider
+                  as='h4'
+                  className='header'
+                  horizontal
+                  style={{ margin: '3em 0em', textTransform: 'uppercase' }}
+                  >
+                  </Divider>
+              <Header as='h3' style={{ fontSize: '2em' }}>You scrolled this far... Nerd.</Header>
+              <p style={{ fontSize: '1.33em' }}>
+                All the cool kids with they could be like us.
+              </p>
+              <Button as='a' size='large' href="http://www.devpointlabs.com/apply">Become a Student</Button>
             </Container>
           </Segment>
         </Container>

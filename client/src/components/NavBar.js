@@ -8,38 +8,10 @@ import logo from '../images/logo_dpl-white.png';
 
 
 class NavBar extends Component {
-  // rightNavs = () => {
-  //   const { user, dispatch, history } = this.props;
-
-  //   if (user.id) {
-  //     return (
-  //       <Menu.Menu inverted="true" position='right'>
-  //         <Menu.Item
-  //           name='Logout'
-  //           onClick={() => dispatch(handleLogout(history))}
-  //         />
-  //       </Menu.Menu>
-  //     );
-  //   }
-  //   return (
-  //     <Menu.Menu position='right'>
-  //       <Link to='/register'>
-  //         <Menu.Item name='Register' />
-  //       </Link>
-  //       <Link to='/login'>
-  //         <Menu.Item name='Login' />
-  //       </Link>
-  //     </Menu.Menu>
-  //   );
-  // }
   state = { menuTab: '' }
 
   handleItemClick = (e, { name }) => this.setState({ menuTab: name })
 
-  mainNav = () => {
-    <Menu pointing>
-    </Menu>
-  }
   underNav = () => {
     const { user, dispatch, history } = this.props;
     const { menuTab } = this.state;
@@ -56,7 +28,7 @@ class NavBar extends Component {
           </Link>
 
 
-          <Link to='/EventList'>
+          <Link to='/eventlist'>
             <Menu.Item
             name='DPL events'
             active={menuTab === 'DPL events'}
@@ -64,7 +36,7 @@ class NavBar extends Component {
             />
           </Link>
 
-          <Link to='/EventForm'>
+          <Link to='/eventform'>
             <Menu.Item
             name='Create Event'
             active={menuTab === 'Create Event'}
@@ -72,7 +44,7 @@ class NavBar extends Component {
             />
           </Link>
 
-          <Link to='/Calendar'>
+          <Link to='/calendar'>
             <Menu.Item
             name='My Calendar'
             active={menuTab === 'My Calendar'}
@@ -80,7 +52,7 @@ class NavBar extends Component {
             />
           </Link>
 
-          <Link to='/Settings'>
+          <Link to='/settings'>
             <Menu.Item
             name='settings'
             active={menuTab === 'settings'}
@@ -97,7 +69,7 @@ class NavBar extends Component {
     }
     return (
       <Menu pointing>
-          <Link to='/Register'>
+          <Link to='/register'>
             <Menu.Item 
             name='register'
             active={menuTab === 'register'}
@@ -105,7 +77,7 @@ class NavBar extends Component {
             />
           </Link>
 
-          <Link to='/Login'>
+          <Link to='/login'>
             <Menu.Item 
             name='login'
             active={menuTab === 'login'}
