@@ -17,12 +17,16 @@ class CRUDButtons extends Component {
     if (account.is_admin || account.id === event.user_id) {
       return (
         <Fragment>
-          <Button onClick={() => this.props.history.push(`/edit/${event.id}`)} color="green">
+          <Button onClick={() => this.props.history.push({
+            pathname: `/eventform`,
+            state: { ...event, edit: true }
+          })} 
+          color="green">
             Edit Event
-            </Button>
+          </Button>
           <Button onClick={() => this.deleteEvent(event.id)} color="red">
             Remove Event
-            </Button>
+          </Button>
         </Fragment>
       )
     } else return null

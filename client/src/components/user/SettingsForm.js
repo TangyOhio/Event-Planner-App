@@ -7,7 +7,7 @@ import { Checkbox } from 'semantic-ui-react'
 
 // This code pertaines to the Account Information settings tab
 class SettingsForm extends Component {
-  state = { email: '', name: '', nickname: '', image: "", is_admin: ""}
+  state = { email: '', name: '', nickname: '', image: '', is_admin: ''}
   
   componentDidMount() {
     const { account } = this.props
