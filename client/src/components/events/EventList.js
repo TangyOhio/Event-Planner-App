@@ -32,18 +32,11 @@ class EventList extends React.Component {
     )
   }
 
-  date_sort_desc = function (date1, date2) {
-    // This is a comparison function that will result in dates being sorted in
-    // DESCENDING order.
-    if (date1 > date2) return -1;
-    if (date1 < date2) return 1;
-    return 0;
-  };
+  
 
   // A function that returns the events laid out all pretty like and such
   displayEvents = () => {
     let { events } = this.props
-    events.sort(date_sort_desc);
     return events.map( event => {
      if (moment(event.date).isAfter(moment()))
       return (
@@ -81,7 +74,7 @@ class EventList extends React.Component {
 
   displayPastEvents = () => {
     let { events } = this.props
-    events.sort
+    events.reverse
     return events.map( event => {
      if (moment(event.date).isBefore(moment()))
       return (
