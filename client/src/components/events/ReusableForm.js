@@ -11,22 +11,19 @@ class ReusableForm extends React.Component {
   componentDidMount() {
     if (this.props.location.state.edit) {
       let { title, category, description, date, start_time, end_time, event_image, private_event, edit, id, user_id } = this.props.location.state
-      // axios.get(`/api/events/${this.props.match.params.id}`)
-      //   .then(res => 
-          this.setState({ 
-            title: title === null ? '' : title,
-            category: category === null ? '' : category,
-            description: description === null ? '' : description,
-            date: date === null ? '' : date,
-            start_time: start_time === null ? false : start_time,
-            end_time: end_time === null ? '' : end_time,
-            event_image: event_image === null ? '' : event_image,
-            private_event: private_event === null ? false : private_event,
-            edit: edit,
-            id: id,
-            user_id: user_id
-          })
-      // )
+        this.setState({ 
+          title: title === null ? '' : title,
+          category: category === null ? '' : category,
+          description: description === null ? '' : description,
+          date: date === null ? '' : date,
+          start_time: start_time === null ? false : start_time,
+          end_time: end_time === null ? '' : end_time,
+          event_image: event_image === null ? '' : event_image,
+          private_event: private_event === null ? false : private_event,
+          edit: edit,
+          id: id,
+          user_id: user_id
+        })
     }
   }
 
