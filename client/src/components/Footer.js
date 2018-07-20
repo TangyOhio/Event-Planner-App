@@ -4,7 +4,8 @@ import {
   Header,
   List,
   Segment,
-} from 'semantic-ui-react'
+} from 'semantic-ui-react';
+import ShareUs from './ShareUs'
 
   class Footer extends Component {
     render() {
@@ -32,7 +33,9 @@ import {
             </Grid.Column>
             <Grid.Column width={7}>
               <Header as='h4' inverted>Footer Header</Header>
-              <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+                <p style={{ color: "white" }}>Like us on facebook and share us on twitter,</p>
+                <ShareUs />
+
             </Grid.Column>
           </Grid.Row>
         </Grid>
