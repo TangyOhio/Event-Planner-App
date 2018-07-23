@@ -1,35 +1,96 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import axios from 'axios'
-import { Checkbox } from 'semantic-ui-react'
-import { updateEvent, addEvent } from '../../reducers/events';
+import { Checkbox, Form, Button, Header, Dropdown } from 'semantic-ui-react'
+import styled from 'styled-components'
+import { updateEvent, addEvent } from '../../reducers/events'
+
+const StyledContainer = styled.div`
+  margin: 2em auto;
+  width: 66%;
+  border: solid 3px black;
+  border-radius: 20px;
+`
+
+const StyledForm = styled(Form)`
+  width: 66%;
+  margin: 1em auto;
+`
+const timeOptions = [
+  { key: '08:00', text: '8:00 am', value: '08:00' },
+  { key: '08:30', text: '8:30 am', value: '08:30' },
+  { key: '09:00', text: '9:00 am', value: '09:00' },
+  { key: '09:30', text: '9:30 am', value: '09:30' },
+  { key: '10:00', text: '10:00 am', value: '10:00' },
+  { key: '10:30', text: '10:30 am', value: '10:30' },
+  { key: '11:00', text: '11:00 am', value: '11:00' },
+  { key: '11:30', text: '11:30 am', value: '11:30' },
+  { key: '12:00', text: '12:00 pm', value: '12:00' },
+  { key: '12:30', text: '12:30 pm', value: '12:30' },
+  { key: '13:00', text: '1:00 pm', value: '13:00' },
+  { key: '13:30', text: '1:30 pm', value: '13:30' },
+  { key: '14:00', text: '2:00 pm', value: '14:00' },
+  { key: '14:30', text: '2:30 pm', value: '14:30' },
+  { key: '15:00', text: '3:00 pm', value: '15:00' },
+  { key: '15:30', text: '3:30 pm', value: '15:30' },
+  { key: '16:00', text: '4:00 pm', value: '16:00' },
+  { key: '16:30', text: '4:30 pm', value: '16:30' },
+  { key: '17:00', text: '5:00 pm', value: '17:00' },
+  { key: '17:30', text: '5:30 pm', value: '17:30' },
+  { key: '18:00', text: '6:00 pm', value: '18:00' },
+  { key: '18:30', text: '6:30 pm', value: '18:30' },
+  { key: '19:00', text: '7:00 pm', value: '19:00' },
+  { key: '19:30', text: '7:30 pm', value: '19:30' },
+  { key: '20:00', text: '8:00 pm', value: '20:00' },
+  { key: '20:30', text: '8:30 pm', value: '20:30' },
+  { key: '21:00', text: '9:00 pm', value: '21:00' },
+  { key: '21:30', text: '9:30 pm', value: '21:30' },
+  { key: '22:00', text: '10:00 pm', value: '22:00' },
+  { key: '22:30', text: '10:30 pm', value: '22:30' },
+  { key: '23:00', text: '11:00 pm', value: '23:00' },
+  { key: '23:30', text: '11:30 pm', value: '23:30' },
+  { key: '00:00', text: '12:00 am', value: '00:00' },
+  { key: '00:30', text: '12:30 am', value: '00:30' },
+  { key: '01:00', text: '1:00 am', value: '01:00' },
+  { key: '01:30', text: '1:30 am', value: '01:30' },
+  { key: '02:00', text: '2:00 am', value: '02:00' },
+  { key: '02:30', text: '2:30 am', value: '02:30' },
+  { key: '03:00', text: '3:00 am', value: '03:00' },
+  { key: '03:30', text: '3:30 am', value: '03:30' },
+  { key: '04:00', text: '4:00 am', value: '04:00' },
+  { key: '04:30', text: '4:30 am', value: '04:30' },
+  { key: '05:00', text: '5:00 am', value: '05:00' },
+  { key: '05:30', text: '5:30 am', value: '05:30' },
+  { key: '06:00', text: '6:00 am', value: '06:00' },
+  { key: '06:30', text: '6:30 am', value: '06:30' },
+  { key: '07:00', text: '7:00 am', value: '07:00' },
+  { key: '07:30', text: '7:30 am', value: '07:30' },
+]
 
 class ReusableForm extends React.Component {
-  defaultValues = { title: '', category: '', description: '', date: '', start_time: '', end_time: '', private_event: false, event_image: '', user_id: 0, edit: false, id: '', user_id: 0}
+  defaultValues = { title: '', category: '', description: '', date: '', start_time: '', end_time: '', private_event: false, event_image: '', user_id: 0, id: '' }
   state = { ...this.defaultValues }
 
   componentDidMount() {
-    if (this.props.location.state.edit) {
-      let { title, category, description, date, start_time, end_time, event_image, private_event, edit, id, user_id } = this.props.location.state
-        this.setState({ 
-          title: title === null ? '' : title,
-          category: category === null ? '' : category,
-          description: description === null ? '' : description,
-          date: date === null ? '' : date,
-          start_time: start_time === null ? false : start_time,
-          end_time: end_time === null ? '' : end_time,
-          event_image: event_image === null ? '' : event_image,
-          private_event: private_event === null ? false : private_event,
-          edit: edit,
-          id: id,
-          user_id: user_id
-        })
+    if (this.props.location.state) {
+      let { title, category, description, date, start_time, end_time, event_image, private_event, id, user_id } = this.props.location.state
+      this.setState({ 
+        title: title === null ? '' : title,
+        category: category === null ? '' : category,
+        description: description === null ? '' : description,
+        date: date === null ? '' : date,
+        start_time: start_time === null ? false : start_time,
+        end_time: end_time === null ? '' : end_time,
+        event_image: event_image === null ? '' : event_image,
+        private_event: private_event === null ? false : private_event,
+        id: id,
+        user_id: user_id
+      })
     }
   }
 
   submit = (event) => {
     const { dispatch, history } = this.props
-    if (this.props.location.state.edit) {
+    if (this.props.location.state) {
       dispatch(updateEvent(event))
       history.push(`/events/${this.props.location.state.id}`)
     } else {
@@ -41,7 +102,7 @@ class ReusableForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     const { account } = this.props
-    if (this.props.location.state.edit) {
+    if (this.props.location.state) {
       let event = { ...this.state }
       this.submit(event)
     } else {
@@ -56,77 +117,104 @@ class ReusableForm extends React.Component {
     this.setState({ [id]: value })
   }
 
+  timeChange = (e, { value }) => this.setState({ start_time: value })
+
   showForm = () => {
     let { title, category, description, date, start_time, end_time, event_image, private_event } = this.state
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          id="title"
-          placeholder={this.state.title ? this.state.title : 'Title'}
-          value={title}
-          onChange={this.handleChange}
-          required
-        />
-        <br />
-        <input
-          id="category"
-          placeholder={this.state.category ? this.state.category : 'Category'}
-          value={category}
-          onChange={this.handleChange}
-        />
-        <br />
-        <input
-          id="description"
-          placeholder={this.state.description ? this.state.description : 'Description of the Event'}
-          type="description"
-          value={description}
-          onChange={this.handleChange}
-        />
-        <br />
-        <input
-          type="date"
-          id="date"
-          value={date}
-          onChange={this.handleChange}
-        />
-        <br />
-        <input
-          id="start_time"
-          placeholder={this.state.start_time ? this.state.start_time : 'Start Time'}
-          value={start_time}
-          onChange={this.handleChange}
-        />
-        <br />
-        <input
-          id="end_time"
-          placeholder={this.state.end_time ? this.state.end_time : 'End Time'}
-          value={end_time}
-          onChange={this.handleChange}
-        />
-        <br />
-        <input
-          id="event_image"
-          placeholder={this.state.event_image ? this.state.event_image : 'Image'}
-          value={event_image}
-          onChange={this.handleChange}
-        />
-        <br />
-        <p> Is this event private? </p>
-        <Checkbox
-          id="private_event"
-          placeholder='Name'
-          checked={private_event}
-          onChange={() => this.setState({ private_event: !private_event })}
-        />
-        <br />
-        <button>Submit</button>
-      </form>
+      <StyledForm onSubmit={this.handleSubmit}>
+        <Form.Field inline >
+          <Header as='label'>Event Title</Header>
+          <input
+            id='title'
+            placeholder='Title'
+            value={title}
+            onChange={this.handleChange}
+            required
+            autoFocus
+          />
+        </Form.Field>
+        <Form.Field inline >
+          <Header as='label'>Category</Header>
+          <input
+            id='category'
+            placeholder='Category'
+            value={category}
+            onChange={this.handleChange}
+          />
+        </Form.Field>
+        <Form.Field inline >
+          <Header as='label'>Description</Header>
+          <input
+            id='description'
+            placeholder='Description of the Event'
+            value={description}
+            onChange={this.handleChange}
+          />
+        </Form.Field>
+        <Form.Group>
+          <Form.Field >
+            <Header as='label'>Date</Header>
+            <input
+              type='date'
+              id='date'
+              value={date}
+              onChange={this.handleChange}
+              width={4}
+            />
+          </Form.Field>
+          <Form.Field >
+            <Header as='label'>Starting Time</Header>
+            <Dropdown
+              id='start_time'
+              onChange={(e, { value }) => this.setState({ start_time: value })}
+              options={timeOptions}
+              placeholder='Start Time'
+              selection
+              value={start_time}
+              width={2}
+            />
+          </Form.Field>
+          <Form.Field >
+            <Header as='label'>Ending Time</Header>
+            <Dropdown
+              id='end_time'
+              onChange={(e, { value }) => this.setState({ end_time: value })}
+              options={timeOptions}
+              placeholder='End Time'
+              selection
+              value={end_time}
+              width={2}
+            />
+          </Form.Field>
+        </Form.Group>
+        <Form.Field inline >
+          <Header as='label'>Image</Header>
+          <input
+            id='event_image'
+            placeholder='An Image for your Event'
+            value={event_image}
+            onChange={this.handleChange}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Checkbox
+            id='private_event'
+            checked={private_event}
+            onChange={() => this.setState({ private_event: !private_event })}
+            label='This is a private event'
+          />
+        </Form.Field>
+        <Button type='submit'>Submit</Button>
+      </StyledForm>
     )
   }
 
   render() {
     return (
-      this.showForm()
+      <StyledContainer>
+        {this.showForm()}
+      </StyledContainer>
     )
   }
 

@@ -19,7 +19,7 @@ class CRUDButtons extends Component {
         <Fragment>
           <Button onClick={() => this.props.history.push({
             pathname: `/eventform`,
-            state: { ...event, edit: true }
+            state: { ...event }
           })} 
           color="green">
             Edit Event

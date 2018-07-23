@@ -19,8 +19,8 @@ class MyCalendar extends React.Component {
   // The function that formats the dates to be tossed in the calendar
   formatEvents = (events) => {
     return events.map(event => {
-      const startDate = `${event.date.toString()}T0${event.start_time}:00`
-      const endDate = `${event.date.toString()}T0${event.end_time}:00`
+      const startDate = `${event.date.toString()}T${event.start_time}:00`
+      const endDate = `${event.date.toString()}T${event.end_time}:00`
       return {
         start: moment(`${startDate}`).format('MM DD YYYY HH:mm A'),
         end: moment(`${endDate}`).format('MM DD YYYY HH:mm A'),
