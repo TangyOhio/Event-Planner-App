@@ -32,8 +32,6 @@ class EventList extends React.Component {
     )
   }
 
-  
-
   // A function that returns the events laid out all pretty like and such
   displayEvents = () => {
     let { events } = this.props

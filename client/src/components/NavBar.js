@@ -52,14 +52,6 @@ class NavBar extends Component {
             />
           </Link>
 
-          <Link to='/settings'>
-            <Menu.Item
-            name='settings'
-            active={menuTab === 'settings'}
-            onClick={this.handleItemClick}
-            />
-          </Link>
-
           <Menu.Item position="right"
             name='Logout'
             onClick={() => dispatch(handleLogout(history))}

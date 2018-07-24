@@ -10,7 +10,6 @@ import AuthRoute from './AuthRoute'
 import FetchUser from './FetchUser'
 import { Switch, Route } from 'react-router-dom'
 import Profile from './user/Profile'
-import Settings from './user/Settings'
 import InviteForm from './user/InviteForm'
 import EventList from './events/EventList'
 import Event from './events/Event'
@@ -32,7 +31,6 @@ class App extends Component {
             <Route exact path='/events/:id' component={Event} />
             <Route exact path='/calendar' component={MyCalendar} />
             <ProtectedRoute exact path='/profile' component={Profile} />
-            <ProtectedRoute exact path='/settings' component={Settings} />
             <ProtectedRoute exact path='/eventform' component={ReusableForm} />
             <ProtectedRoute exact path='/inviteform' component={InviteForm} />
             <AuthRoute exact path='/login' component={Login} />
