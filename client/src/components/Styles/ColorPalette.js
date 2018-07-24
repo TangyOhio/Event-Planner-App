@@ -1,5 +1,4 @@
-
-const ColorPalette = {
+export const ColorPalette = {
 
   black:	'#000000',	 
  	silver:	'#c0c0c0',	 
@@ -148,6 +147,5 @@ const ColorPalette = {
  	yellowgreen:	'#9acd32',
 }
 
-export default ColorPalette;
 
 

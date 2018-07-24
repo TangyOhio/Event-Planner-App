@@ -86,7 +86,7 @@ class NavBar extends Component {
     return (
       <div className="main-nav" position="bottom">
         <Link to='/' className="logo">
-          <img src={logo} width="300px" alt="" />
+          <img src={logo} width="350px" alt="" />
         </Link>
         <div position="right">
         { this.underNav() }

@@ -35,15 +35,11 @@ import MyCalendar from './events/MyCalendar'
         <Segment textAlign="center" style={{ padding: '8em 0em' }} vertical>
           <Container text>
               <Header as='h3' style={{ fontSize: '2em' }}>Upcoming Events</Header>
-              <p style={{ fontSize: '1.25em' }}>
 
               <MyCalendar
                 view='week'
               />
-
-{/*insert Calendar*/}
-
-              </p>
+              
               <Button as='a' size='large' href="http://devpointlabs.com">
               Learn More
               </Button>
