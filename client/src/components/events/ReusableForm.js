@@ -100,6 +100,9 @@ class ReusableForm extends React.Component {
     if (this.props.location.state) {
       let event = { ...this.state }
       this.submit(event)
+        return (
+          alert("You edited the event.")
+        )
     } else {
       let event = { ...this.state, user_id: account.id }
       this.submit(event)
