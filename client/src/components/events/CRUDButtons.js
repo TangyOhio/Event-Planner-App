@@ -24,7 +24,7 @@ class CRUDButtons extends Component {
           color="green">
             Edit Event
           </Button>
-          <Button onClick={() => this.deleteEvent(event.id)} color="red">
+          <Button color="red" onClick={() => { if (window.confirm('Are you sure you want to delete this event?')) { this.deleteEvent(event.id) }; }}>
             Remove Event
           </Button>
         </Fragment>
