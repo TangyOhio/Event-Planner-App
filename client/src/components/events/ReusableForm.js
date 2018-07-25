@@ -1,20 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Checkbox, Form, Button, Header, Dropdown } from 'semantic-ui-react'
+import { Checkbox, Form, Button, Header, Dropdown, Segment, Input } from 'semantic-ui-react'
 import styled from 'styled-components'
 import { updateEvent, addEvent } from '../../reducers/events'
 
 const StyledContainer = styled.div`
-  margin: 2em auto;
-  width: 66%;
-  border: solid 3px black;
-  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  margin: 1em 5em;
 `
 
-const StyledForm = styled(Form)`
-  width: 66%;
-  margin: 1em auto;
-`
 const timeOptions = [
   { key: '08:00', text: '8:00 am', value: '08:00' },
   { key: '08:30', text: '8:30 am', value: '08:30' },
@@ -122,45 +117,46 @@ class ReusableForm extends React.Component {
   showForm = () => {
     let { title, category, description, date, start_time, end_time, event_image, private_event } = this.state
     return (
-      <StyledForm onSubmit={this.handleSubmit}>
-        <Form.Field inline >
-          <Header as='label'>Event Title</Header>
-          <input
-            id='title'
-            placeholder='Title'
-            value={title}
-            onChange={this.handleChange}
-            required
-            autoFocus
-          />
-        </Form.Field>
-        <Form.Field inline >
-          <Header as='label'>Category</Header>
-          <input
-            id='category'
-            placeholder='Category'
-            value={category}
-            onChange={this.handleChange}
-          />
-        </Form.Field>
-        <Form.Field inline >
-          <Header as='label'>Description</Header>
-          <input
-            id='description'
-            placeholder='Description of the Event'
-            value={description}
-            onChange={this.handleChange}
-          />
-        </Form.Field>
-        <Form.Group>
+      <Form onSubmit={this.handleSubmit}>
+        <Form.Group widths='equal'>
+          <Form.Field >
+            <Header as='label'>Event Title</Header>
+            <Input
+              id='title'
+              placeholder='Title'
+              value={title}
+              onChange={this.handleChange}
+              required
+              autoFocus
+            />
+          </Form.Field>
+          <Form.Field >
+            <Header as='label'>Category</Header>
+            <Input
+              id='category'
+              placeholder='Category'
+              value={category}
+              onChange={this.handleChange}
+            />
+          </Form.Field>
+          <Form.Field >
+            <Header as='label'>Description</Header>
+            <Input
+              id='description'
+              placeholder='Description of the Event'
+              value={description}
+              onChange={this.handleChange}
+            />
+          </Form.Field>
+        </Form.Group>
+        <Form.Group widths='equal'>
           <Form.Field >
             <Header as='label'>Date</Header>
-            <input
+            <Input
               type='date'
               id='date'
               value={date}
               onChange={this.handleChange}
-              width={4}
             />
           </Form.Field>
           <Form.Field >
@@ -172,7 +168,6 @@ class ReusableForm extends React.Component {
               placeholder='Start Time'
               selection
               value={start_time}
-              width={2}
             />
           </Form.Field>
           <Form.Field >
@@ -184,13 +179,12 @@ class ReusableForm extends React.Component {
               placeholder='End Time'
               selection
               value={end_time}
-              width={2}
             />
           </Form.Field>
         </Form.Group>
         <Form.Field inline >
           <Header as='label'>Image</Header>
-          <input
+          <Input
             id='event_image'
             placeholder='An Image for your Event'
             value={event_image}
@@ -206,14 +200,16 @@ class ReusableForm extends React.Component {
           />
         </Form.Field>
         <Button type='submit'>Submit</Button>
-      </StyledForm>
+      </Form>
     )
   }
 
   render() {
     return (
       <StyledContainer>
-        {this.showForm()}
+        <Segment>
+          {this.showForm()}
+        </Segment>
       </StyledContainer>
     )
   }

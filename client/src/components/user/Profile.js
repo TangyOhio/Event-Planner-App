@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import { Header, Tab, Loader } from 'semantic-ui-react'
+import { Header, Tab, Loader, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import NotificationSettings from './NotificationSettings'
 import SettingsForm from './SettingsForm'
 import UserEvents from './UserEvents'
 import styled from 'styled-components'
+import ProfilePage from './ProfilePage';
 
 const StyledContainer = styled.div`
   display: flex;
-  align-content: center;
-  justify-content: flex-end;
-  margin: 10px 20px;
+  flex-direction: column;
+  margin: 1em 5em;
 `
 
 class Profile extends Component {
@@ -19,25 +19,25 @@ class Profile extends Component {
   
   panes = [
     { 
-      menuItem: 'Account Information', render: () => <Tab.Pane attached={false} color='violet'><SettingsForm /></Tab.Pane> 
-    },
-    { 
       menuItem: 
         'My Events', 
         render: () => 
-            <Tab.Pane attached={false} color='violet'>
-              <UserEvents 
-                rsvps={this.state.rsvps} 
-                events={this.props.events} 
-                account={this.props.account} 
-              />
-            </Tab.Pane> 
+          <Tab.Pane attached={false}>
+            <UserEvents 
+              rsvps={this.state.rsvps} 
+              events={this.props.events} 
+              account={this.props.account} 
+            />
+          </Tab.Pane> 
     },
     { 
-      menuItem: 'Notification Settings', render: () => <Tab.Pane attached={false} color='violet'><NotificationSettings /></Tab.Pane> 
+      menuItem: 'Account Information', render: () => <Tab.Pane attached={false}><SettingsForm /></Tab.Pane> 
     },
     { 
-      menuItem: 'Delete Account', render: () => <Tab.Pane attached={false} color='violet'>Delete Account</Tab.Pane> 
+      menuItem: 'Notification Settings', render: () => <Tab.Pane attached={false}><NotificationSettings /></Tab.Pane> 
+    },
+    { 
+      menuItem: 'Delete Account', render: () => <Tab.Pane attached={false}>Delete Account</Tab.Pane> 
     },
   ]
 
@@ -55,8 +55,9 @@ class Profile extends Component {
     if (this.state.loaded) {
       return (
         <StyledContainer>
-          <Header as='h1'>Profile</Header>
-          <Tab menu={{ secondary: true, pointing: true }} panes={this.panes} />
+          <Divider horizontal><Header as='h1'>Profile</Header></Divider>
+            <ProfilePage user={this.props.account} />
+            <Tab menu={{ secondary: true, pointing: true }} panes={this.panes} />
         </StyledContainer>
       )
     } else return <Loader />

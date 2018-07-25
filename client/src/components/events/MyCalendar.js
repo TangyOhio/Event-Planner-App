@@ -29,14 +29,13 @@ class MyCalendar extends React.Component {
       }
     })
   }
-
-
   
   showCal = () => (
     <BigCalendar
       events={this.formatEvents(this.props.events)}
       defaultDate={new Date()}
       style={{ height: '100vh' }}
+      defaultView={ this.props.view ? this.props.view : 'month'}
       showMultiDayTimes
       onSelectEvent={event => this.props.history.push(`/events/${event.id}`)}
     />

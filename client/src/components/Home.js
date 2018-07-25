@@ -6,7 +6,6 @@ import {
   Divider,
   Header,
   Segment,
-
 } from 'semantic-ui-react'
 import './styles.css'
 import MyCalendar from './events/MyCalendar'

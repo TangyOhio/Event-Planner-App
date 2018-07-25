@@ -3,7 +3,15 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import { setFlash } from '../../reducers/flash'
 import { setHeaders } from '../../reducers/headers'
-import { Checkbox } from 'semantic-ui-react'
+import { Form, Header, Button, Checkbox, Input} from 'semantic-ui-react'
+import styled from 'styled-components'
+
+const StyledForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
 
 // This code pertaines to the Account Information settings tab
 class SettingsForm extends Component {
@@ -44,46 +52,57 @@ class SettingsForm extends Component {
   showForm = () => {
     let { email, name, nickname, image, is_admin } = this.state
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          id="email"
-          placeholder={email}
-          value={email}
-        onChange={this.handleChange}
-        required
-      />
-        <br />
-        <input
-          id="name"
-          placeholder='Name'
-          value={name}
-          onChange={this.handleChange}
-        />
-        <br />
-        <input
-          id="nickname"
-          placeholder='Username'
-          value={nickname}
-          onChange={this.handleChange}
-        />
-        <input
-          id="image"
-          placeholder={image}
-          value={image}
-          onChange={this.handleChange}
-          required
-        />
-        <br />
-        <p> Are you an admin? </p>
-        <Checkbox
-          id="is_admin"
-          placeholder='Name'
-          checked={is_admin}
-          onChange={() => this.setState({ is_admin: !this.state.is_admin })}
-        />
-        <br />
-        <button>Submit</button>
-      </form>
+      <StyledForm onSubmit={this.handleSubmit}>
+        <Form.Field inline >
+          <Header as='label'>Email</Header>
+          <Input
+            id='email'
+            placeholder={email}
+            value={email}
+            onChange={this.handleChange}
+            type='email'
+            required
+            autoFocus
+            />
+        </Form.Field>
+        <Form.Field inline >
+          <Header as='label'>Name</Header>
+          <Input
+            id='name'
+            placeholder='Name'
+            value={name}
+            onChange={this.handleChange}
+            />
+        </Form.Field>
+        <Form.Field inline >
+          <Header as='label'>Username</Header>
+          <Input
+            id='nickname'
+            placeholder='Username'
+            value={nickname}
+            onChange={this.handleChange}
+            />
+        </Form.Field>
+        <Form.Field inline >
+          <Header as='label'>Profile Picture</Header>
+          <Input
+            id='image'
+            placeholder='Profile Picture'
+            value={image}
+            onChange={this.handleChange}
+            />
+        </Form.Field>
+        <Form.Field>
+          <Checkbox
+            id="is_admin"
+            placeholder='Name'
+            checked={is_admin}
+            onChange={() => this.setState({ is_admin: !this.state.is_admin })}
+            label='I am an admin'
+            />
+        </Form.Field>
+        <Button type='submit'>Submit</Button>
+      </StyledForm>
     )
   }
 

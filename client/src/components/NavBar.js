@@ -3,7 +3,6 @@ import { Menu } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleLogout } from '../actions/auth';
-// import SVG from 'react-inlinesvg';
 import logo from '../images/logo_dpl-white.png';
 
 
@@ -46,8 +45,8 @@ class NavBar extends Component {
 
           <Link to='/calendar'>
             <Menu.Item
-            name='My Calendar'
-            active={menuTab === 'My Calendar'}
+            name='Calendar'
+            active={menuTab === 'Calendar'}
             onClick={this.handleItemClick}
             />
           </Link>
@@ -61,8 +60,24 @@ class NavBar extends Component {
     }
     return (
       <Menu pointing>
+          <Link to='/eventlist'>
+            <Menu.Item
+              name='DPL events'
+              active={menuTab === 'DPL events'}
+              onClick={this.handleItemClick}
+            />
+          </Link>
+
+          <Link to='/calendar'>
+            <Menu.Item
+              name='Calendar'
+              active={menuTab === 'Calendar'}
+              onClick={this.handleItemClick}
+            />
+          </Link>
+
           <Link to='/register'>
-            <Menu.Item 
+            <Menu.Item position='right'
             name='register'
             active={menuTab === 'register'}
             onClick={this.handleItemClick}
@@ -70,7 +85,7 @@ class NavBar extends Component {
           </Link>
 
           <Link to='/login'>
-            <Menu.Item 
+            <Menu.Item position='right'
             name='login'
             active={menuTab === 'login'}
             onClick={this.handleItemClick}
