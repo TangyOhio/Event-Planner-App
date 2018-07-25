@@ -13,7 +13,7 @@ const StyledForm = styled(Form)`
   justify-content: center;
 `
 
-// This code pertaines to the Account Information settings tab
+// This code pertains to the Account Information settings tab
 class SettingsForm extends Component {
   state = { email: '', name: '', nickname: '', image: '', is_admin: ''}
   
@@ -33,7 +33,6 @@ class SettingsForm extends Component {
     axios.put(`/api/users/${this.props.account.id}`, { user })
       .then(res => {
         dispatch(setHeaders( res.headers ))
-        dispatch(setFlash('You Successfully Updated Your Info', 'green'))
         window.location.reload()
       })
   }

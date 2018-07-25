@@ -15,8 +15,9 @@ const StyledContainer = styled.div`
 `
 
 class Profile extends Component {
-  state = { rsvps: [], loaded: false }
+  state = { rsvps: [] }
   
+  // The components that will be loaded from the semantic ui tabs
   panes = [
     { 
       menuItem: 
@@ -45,22 +46,20 @@ class Profile extends Component {
     // Grab the rsvps
     axios.get('/api/rsvps')
       .then( res => {
-        this.setState({ rsvps: res.data, loaded: true })
+        this.setState({ rsvps: res.data })
     }).catch(err => {
         alert(`There was an error: ${err}`)
     })
   }
 
   render() {
-    if (this.state.loaded) {
-      return (
-        <StyledContainer>
-          <Divider horizontal><Header as='h1'>Profile</Header></Divider>
-            <ProfilePage user={this.props.account} />
-            <Tab menu={{ secondary: true, pointing: true }} panes={this.panes} />
-        </StyledContainer>
-      )
-    } else return <Loader />
+    return (
+      <StyledContainer>
+        <Divider horizontal><Header as='h1'>Profile</Header></Divider>
+          <ProfilePage user={this.props.account} />
+          <Tab menu={{ secondary: true, pointing: true }} panes={this.panes} />
+      </StyledContainer>
+    )
   }
 }
 
@@ -71,6 +70,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-
 export default connect(mapStateToProps)(Profile)
-

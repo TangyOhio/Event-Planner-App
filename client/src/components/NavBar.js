@@ -26,7 +26,6 @@ class NavBar extends Component {
             />
           </Link>
 
-
           <Link to='/eventlist'>
             <Menu.Item
             name='DPL events'
@@ -51,13 +50,15 @@ class NavBar extends Component {
             />
           </Link>
 
-          <Menu.Item position="right"
+          <Menu.Item 
+            position="right"
             name='Logout'
             onClick={() => dispatch(handleLogout(history))}
           />
         </Menu>
       );
     }
+
     return (
       <Menu pointing>
           <Link to='/eventlist'>
@@ -77,7 +78,8 @@ class NavBar extends Component {
           </Link>
 
           <Link to='/register'>
-            <Menu.Item position='right'
+            <Menu.Item 
+            position='right'
             name='register'
             active={menuTab === 'register'}
             onClick={this.handleItemClick}
@@ -85,7 +87,8 @@ class NavBar extends Component {
           </Link>
 
           <Link to='/login'>
-            <Menu.Item position='right'
+            <Menu.Item
+            position='right'
             name='login'
             active={menuTab === 'login'}
             onClick={this.handleItemClick}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Checkbox, Form, Button, Header, Dropdown, Segment, Input } from 'semantic-ui-react'
+import { Checkbox, Form, Button, Header, Dropdown, Segment, Input, Divider } from 'semantic-ui-react'
 import styled from 'styled-components'
 import { updateEvent, addEvent } from '../../reducers/events'
 
@@ -118,6 +118,7 @@ class ReusableForm extends React.Component {
     let { title, category, description, date, start_time, end_time, event_image, private_event } = this.state
     return (
       <Form onSubmit={this.handleSubmit}>
+        <Divider horizontal><Header as='h1'>Your Event</Header></Divider>
         <Form.Group widths='equal'>
           <Form.Field >
             <Header as='label'>Event Title</Header>
@@ -149,6 +150,7 @@ class ReusableForm extends React.Component {
             />
           </Form.Field>
         </Form.Group>
+        <Divider />
         <Form.Group widths='equal'>
           <Form.Field >
             <Header as='label'>Date</Header>
@@ -182,6 +184,7 @@ class ReusableForm extends React.Component {
             />
           </Form.Field>
         </Form.Group>
+        <Divider />
         <Form.Field inline >
           <Header as='label'>Image</Header>
           <Input
