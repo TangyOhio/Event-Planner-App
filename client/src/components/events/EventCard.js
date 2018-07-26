@@ -32,6 +32,8 @@ const registerButton = (event, history, rsvp, cancel) => {
 }
 
 class EventCard extends Component {
+
+  
   render() {
   const { event, history, rsvp, cancel } = this.props
     return (

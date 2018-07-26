@@ -12,7 +12,7 @@ class UserEvents extends Component {
         if (rsvp.event_id === event.id) {
           return (
             <Fragment>
-              <EventCard event={event} key={event.id} rsvp={rsvp} cancel={true} />
+              <EventCard event={event} key={event.id} rsvp={rsvp} cancel={true} history={this.props.history} />
             </Fragment>
           )
         } else return null
@@ -27,7 +27,7 @@ class UserEvents extends Component {
     return events.map(event => {
       if (event.user_id === account.id) {
         return (
-          <EventCard event={event} key={event.id} cancel={false}/>
+          <EventCard event={event} key={event.id} cancel={false} history={this.props.history} />
         )
       } else return null
     })

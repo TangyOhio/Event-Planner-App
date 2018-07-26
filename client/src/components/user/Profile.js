@@ -29,6 +29,7 @@ class Profile extends Component {
               rsvps={this.state.rsvps} 
               events={this.props.events} 
               account={this.props.account} 
+              history={this.props.history}
             />
           </Tab.Pane> 
     },

@@ -12,12 +12,12 @@ class CRUDButtons extends Component {
   }
 
   // Conditionally renders the edit or delete button based on whether or not a user made the event or is an admin
-  crudButtons = (event) => {
+  crudButtons = (event, history) => {
     const { account } = this.props
     if (account.is_admin || account.id === event.user_id) {
       return (
         <Fragment>
-          <Button onClick={() => this.props.history.push({
+          <Button onClick={() => history.push({
             pathname: `/eventform`,
             state: { ...event, edit: true }
           })} 
@@ -33,9 +33,9 @@ class CRUDButtons extends Component {
   }
 
   render() {
-    const { event } = this.props
+    const { event, history } = this.props
     return (
-      this.crudButtons(event)
+      this.crudButtons(event, history)
     )
   }
 }

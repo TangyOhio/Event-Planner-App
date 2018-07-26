@@ -90,7 +90,7 @@ class ReusableForm extends React.Component {
       history.push(`/events/${this.props.location.state.id}`)
     } else {
       dispatch(addEvent(event))
-      history.push(`/events/${this.props}`);
+      history.push(`/profile`)
     }
   }
 

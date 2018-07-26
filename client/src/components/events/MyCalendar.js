@@ -35,8 +35,7 @@ class MyCalendar extends React.Component {
       events={this.formatEvents(this.props.events)}
       defaultDate={new Date()}
       style={{ height: '100vh' }}
-      defaultView={ this.props.view ? this.props.view : 'month'}
-      showMultiDayTimes
+      views={['month', 'agenda']}
       onSelectEvent={event => this.props.history.push(`/events/${event.id}`)}
     />
   )

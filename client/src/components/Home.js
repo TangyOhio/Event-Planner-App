@@ -28,7 +28,6 @@ import '../../node_modules/react-typist/dist/Typist.css'
             <Link to='/register'>
               <Button primary size='huge'>
                 Sign Up to RSVP
-                {/* <Icon name='right arrow' /> */}
               </Button>
             </Link>
           </Segment>

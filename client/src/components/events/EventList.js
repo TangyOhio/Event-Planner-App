@@ -24,22 +24,22 @@ class EventList extends React.Component {
     return events.map( event => {
      if (moment(event.date).isAfter(moment()))
       return (
-        <EventCard event={event} key={event.id} cancel={false} />
+        <EventCard event={event} key={event.id} cancel={false} history={this.props.history} />
       )
     })
   }
 
+  // A function that will display the events that are before our current date
   displayPastEvents = () => {
     let { events } = this.props
     events.reverse
     return events.map( event => {
       if (moment(event.date).isBefore(moment()))
         return (
-          <EventCard event={event} key={event.id} cancel={false} />
+          <EventCard event={event} key={event.id} cancel={false} history={this.props.history} />
         )
     })
   }
-
 
   render() {
     return (

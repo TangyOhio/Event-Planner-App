@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { Menu } from 'semantic-ui-react';
-import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { handleLogout } from '../actions/auth';
-import logo from '../images/logo_dpl-white.png';
+import React, { Component } from 'react'
+import { Menu } from 'semantic-ui-react'
+import { Link, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { handleLogout } from '../actions/auth'
+import logo from '../images/logo_dpl-white.png'
 
 
 class NavBar extends Component {
   state = { menuTab: '' }
 
-  handleItemClick = (e, { name }) => this.setState({ menuTab: name })
+  handleItemClick = (e, { name }) => this.setState({ menuTab: name }, window.scrollTo(0, 0))
 
   underNav = () => {
-    const { user, dispatch, history } = this.props;
-    const { menuTab } = this.state;
+    const { user, dispatch, history } = this.props
+    const { menuTab } = this.state
     
     if (user.id) {
       return (
@@ -56,7 +56,7 @@ class NavBar extends Component {
             onClick={() => dispatch(handleLogout(history))}
           />
         </Menu>
-      );
+      )
     }
 
     return (
@@ -96,26 +96,25 @@ class NavBar extends Component {
           </Link>
 
       </Menu>
-    );
+    )
   }
-
 
   render() {
     return (
       <div className="main-nav" position="bottom">
-        <Link to='/' className="logo">
+        <Link to='/' className="logo" onClick={window.scrollTo(0, 0)}>
           <img src={logo} width="350px" alt="" />
         </Link>
         <div position="right">
         { this.underNav() }
         </div>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => {
-  return { user: state.user };
-};
+  return { user: state.user }
+}
 
-export default withRouter(connect(mapStateToProps)(NavBar));
+export default withRouter(connect(mapStateToProps)(NavBar))
