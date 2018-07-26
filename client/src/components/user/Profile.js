@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Header, Tab, Divider } from 'semantic-ui-react'
+import { Header, Tab, Divider, Container } from 'semantic-ui-react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import NotificationSettings from './NotificationSettings'
@@ -9,10 +9,10 @@ import styled from 'styled-components'
 import ProfilePage from './ProfilePage';
 import { getEvents } from '../../reducers/events';
 
-const StyledContainer = styled.div`
+const StyledContainer = styled(Container)`
   display: flex;
   flex-direction: column;
-  margin: 1em 5em;
+  margin: 2em auto;
 `
 
 class Profile extends Component {

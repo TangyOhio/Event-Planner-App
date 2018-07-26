@@ -1,9 +1,14 @@
 import React from 'react'
-import { Card, Header, Container } from 'semantic-ui-react'
+import { Card, Header, Container, Divider } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
+import moment from 'moment'
 import EventCard from './EventCard'
 import { getEvents } from '../../reducers/events'
-import moment from 'moment'
+
+const StyledContainer = styled(Container)`
+  margin: 2em auto;
+`
 
 class EventList extends React.Component {
 
@@ -28,27 +33,27 @@ class EventList extends React.Component {
     let { events } = this.props
     events.reverse
     return events.map( event => {
-     if (moment(event.date).isBefore(moment()))
-      return (
-        <EventCard event={event} key={event.id} cancel={false} />
-      )
+      if (moment(event.date).isBefore(moment()))
+        return (
+          <EventCard event={event} key={event.id} cancel={false} />
+        )
     })
   }
 
 
   render() {
     return (
-      <Container>
-        <Header as='h1'>Event List</Header>
+      <StyledContainer>
+        <Divider horizontal><Header as='h1'>Our Events</Header></Divider>
         <Card.Group itemsPerRow={3}>
           {this.displayEvents()}
         </Card.Group>
-        <Header as='h1'>See our past events</Header>
+        <Divider horizontal><Header as='h1'>Our Past Events</Header></Divider>
         <Card.Group itemsPerRow={3}>
           {this.displayPastEvents()}
         </Card.Group>
 
-      </Container>
+      </StyledContainer>
     )
   }
 }

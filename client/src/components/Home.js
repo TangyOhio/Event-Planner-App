@@ -17,7 +17,9 @@ import '../../node_modules/react-typist/dist/Typist.css'
             <Header as='h3' style={{ fontSize: '5em' }}>
               <div style={{ display: 'flex', flexFlow: 'row noWrap', justifyContent: 'center' }}>
                 Get Nerdy With Us.
-                <Typist show={true} blink={true} element='|' > </Typist>
+                <div style={{ position: 'relative', bottom: '5px' }}>
+                  <Typist show={true} blink={true} element='|' />
+                </div>
               </div>
             </Header>
               <p style={{ fontSize: '2em' }}>

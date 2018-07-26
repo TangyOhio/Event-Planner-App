@@ -1,10 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import {
- Grid,
- Image,
- Segment
-} from 'semantic-ui-react'
+import { Grid, Image, Segment, Divider } from 'semantic-ui-react'
+import moment from 'moment'
 import RSVPButton from './RSVPButton'
 import { connect } from 'react-redux'
 import CRUDButtons from './CRUDButtons'
@@ -18,6 +15,17 @@ class Event extends React.Component {
     .then( res => {
       this.setState({ event: res.data })
     })
+  }
+
+  // Displays the time of the events
+  eventTime = (event, day) => {
+    const startDate = `${event.date}T${event.start_time}:00`
+    const endDate = `${event.date}T${event.end_time}:00`
+    if (day) {
+      return moment(startDate).format('dddd, MMM Do YYYY')
+    } else {
+      return `${moment(startDate).format('h:mma')} - ${moment(endDate).format('h:mma')}`
+    }
   }
 
   render() {
@@ -49,10 +57,9 @@ class Event extends React.Component {
 
             <Grid.Column width={6}>
               <h4>Date & Time</h4>
-              <p>{event.date}</p>
-              <p>
-                Time: {event.start_time} - {event.end_time}
-              </p>
+              <Divider />
+              <p>{this.eventTime(event, true)}</p>
+              <p>{this.eventTime(event, false)}</p>
             </Grid.Column>
 
             <CRUDButtons event={event} history={this.props.history} />
