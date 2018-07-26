@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Button, Container, Divider, Header, Segment } from 'semantic-ui-react'
 import './styles.css'
 import MyCalendar from './events/MyCalendar'
+import Typist from 'react-typist'
+import '../../node_modules/react-typist/dist/Typist.css'
 
   // Home page for DPL Events
   class Home extends Component {
@@ -13,7 +15,10 @@ import MyCalendar from './events/MyCalendar'
         <Container>
           <Segment textAlign='center' style={{ padding: '5em 0em' }} vertical>
             <Header as='h3' style={{ fontSize: '5em' }}>
-            Get Nerdy With Us.
+              <div style={{ display: 'flex', flexFlow: 'row noWrap', justifyContent: 'center' }}>
+                Get Nerdy With Us.
+                <Typist show={true} blink={true} element='|' > </Typist>
+              </div>
             </Header>
               <p style={{ fontSize: '2em' }}>
                 Join us at our next event!

@@ -22,8 +22,8 @@ class MyCalendar extends React.Component {
       const startDate = `${event.date}T${event.start_time}:00`
       const endDate = `${event.date.toString()}T${event.end_time}:00`
       return {
-        start: moment(`${startDate}`).format('MM DD YYYY HH:mm A'),
-        end: moment(`${endDate}`).format('MM DD YYYY HH:mm A'),
+        start: moment(`${startDate}`).format('MM DD YYYY HH:mm'),
+        end: moment(`${endDate}`).format('MM DD YYYY HH:mm'),
         title: event.title,
         id: event.id
       }

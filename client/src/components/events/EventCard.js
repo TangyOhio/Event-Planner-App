@@ -1,27 +1,30 @@
 import React, { Component, Fragment } from 'react'
 import { Card, Image, Grid } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 import RSVPButton from './RSVPButton'
 import CRUDButtons from './CRUDButtons'
 
 // Displays the time of the events
 const eventTime = (event) => {
+  const startDate = `${event.date}T${event.start_time}:00`
+  const endDate = `${event.date.toString()}T${event.end_time}:00`
   return (
     <Grid centered>
       <Grid.Row>
         <Grid.Column width={8} >
-          Date: {event.date}
+          Date: {moment(`${startDate}`).format('MM DD YYYY')}
         </Grid.Column>
         <Grid.Column width={8} >
-          Time: {event.start_time} - {event.end_time}
+          Time: {moment(`${startDate}`).format('h:mma')} - {moment(`${endDate}`).format('h:mma')}
         </Grid.Column>
       </Grid.Row>
     </Grid>
   )
 }
 
-/* Displays either register and the crud buttons, or remove rsvp,
-   depending on where this component is being called
+/*  Displays either register and the crud buttons, or remove rsvp,
+    depending on where this component is being called
 */
 const registerButton = (event, history, rsvp, cancel) => {
   if ( cancel ) {

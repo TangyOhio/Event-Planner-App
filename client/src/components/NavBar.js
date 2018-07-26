@@ -34,18 +34,18 @@ class NavBar extends Component {
             />
           </Link>
 
-          <Link to='/eventform'>
-            <Menu.Item
-            name='Create Event'
-            active={menuTab === 'Create Event'}
-            onClick={this.handleItemClick}
-            />
-          </Link>
-
           <Link to='/calendar'>
             <Menu.Item
             name='Calendar'
             active={menuTab === 'Calendar'}
+            onClick={this.handleItemClick}
+            />
+          </Link>
+
+          <Link to='/eventform'>
+            <Menu.Item
+            name='Create Event'
+            active={menuTab === 'Create Event'}
             onClick={this.handleItemClick}
             />
           </Link>

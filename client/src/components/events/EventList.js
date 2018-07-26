@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Card, Header, Container } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import EventCard from './EventCard'
