@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react'
-import { Card, Header, Grid, Image, Icon, Divider, Progress } from 'semantic-ui-react'
+import React from 'react'
+import { Card, Header, Grid, Image, Icon, Divider, Progress, Container } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import RSVPButton from './RSVPButton'
@@ -111,17 +111,17 @@ class EventList extends React.Component {
 
   render() {
     return (
-      <Fragment>
+      <Container>
         <Header as='h1'>Event List</Header>
-        <Card.Group stackable itemsPerRow={3}>
-          {this.displayEvents()}
-        </Card.Group>
+          <Card.Group stackable itemsPerRow={3}>
+            {this.displayEvents()}
+          </Card.Group>
         <Header as='h1'>See our past events</Header>
-        <Card.Group stackable itemsPerRow={3}>
-          {this.displayPastEvents()}
-        </Card.Group>
+          <Card.Group stackable itemsPerRow={3}>
+            {this.displayPastEvents()}
+          </Card.Group>
 
-      </Fragment>
+      </Container>
     )
   }
 }

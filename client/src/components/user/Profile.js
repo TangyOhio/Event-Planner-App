@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Header, Tab, Loader, Divider } from 'semantic-ui-react'
+import { Header, Tab, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import NotificationSettings from './NotificationSettings'

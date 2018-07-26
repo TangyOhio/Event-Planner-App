@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import { setFlash } from '../../reducers/flash'
 import { setHeaders } from '../../reducers/headers'
 import { Form, Header, Button, Checkbox, Input} from 'semantic-ui-react'
 import styled from 'styled-components'
