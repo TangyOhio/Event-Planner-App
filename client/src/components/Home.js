@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Button,
-  Container,
-  Divider,
-  Header,
-  Segment,
-} from 'semantic-ui-react'
+import { Button, Container, Divider, Header, Segment } from 'semantic-ui-react'
 import './styles.css'
 import MyCalendar from './events/MyCalendar'
 
@@ -36,11 +30,11 @@ import MyCalendar from './events/MyCalendar'
               <Header as='h3' style={{ fontSize: '2em' }}>Upcoming Events</Header>
 
               <MyCalendar
-                view='week'
+                history={this.props.history}
               />
               
               <Button as='a' size='large' href="http://devpointlabs.com">
-              Learn More
+                Learn More
               </Button>
                 <Divider
                   as='h4'
@@ -61,4 +55,5 @@ import MyCalendar from './events/MyCalendar'
     )
   }
 }
+
 export default Home

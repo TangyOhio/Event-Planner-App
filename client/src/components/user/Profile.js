@@ -7,6 +7,7 @@ import SettingsForm from './SettingsForm'
 import UserEvents from './UserEvents'
 import styled from 'styled-components'
 import ProfilePage from './ProfilePage';
+import { getEvents } from '../../reducers/events';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -50,6 +51,8 @@ class Profile extends Component {
     }).catch(err => {
         alert(`There was an error: ${err}`)
     })
+
+    this.props.dispatch(getEvents())
   }
 
   render() {

@@ -123,7 +123,7 @@ class ReusableForm extends React.Component {
       <Form onSubmit={this.handleSubmit}>
         <Divider horizontal><Header as='h1'>Your Event</Header></Divider>
         <Form.Group widths='equal'>
-          <Form.Field >
+          <Form.Field required>
             <Header as='label'>Event Title</Header>
             <Input
               id='title'
@@ -155,18 +155,20 @@ class ReusableForm extends React.Component {
         </Form.Group>
         <Divider />
         <Form.Group widths='equal'>
-          <Form.Field >
+          <Form.Field required >
             <Header as='label'>Date</Header>
             <Input
+              required
               type='date'
               id='date'
               value={date}
               onChange={this.handleChange}
             />
           </Form.Field>
-          <Form.Field >
+          <Form.Field required >
             <Header as='label'>Starting Time</Header>
             <Dropdown
+              required
               id='start_time'
               onChange={(e, { value }) => this.setState({ start_time: value })}
               options={timeOptions}
@@ -175,9 +177,10 @@ class ReusableForm extends React.Component {
               value={start_time}
             />
           </Form.Field>
-          <Form.Field >
+          <Form.Field required >
             <Header as='label'>Ending Time</Header>
             <Dropdown
+              required
               id='end_time'
               onChange={(e, { value }) => this.setState({ end_time: value })}
               options={timeOptions}

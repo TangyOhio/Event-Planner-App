@@ -23,16 +23,26 @@ class RSVPButton extends React.Component {
       })
   }
 
+  // Cancels the rsvp, and updates the list
+  handleCancel = (id) => {
+    axios.delete(`/api/rsvps/${id}`)
+      .then(window.location.reload())
+  }
+
   render() {
-    const { event, account } = this.props
-    if (account.id) {
-      return (
-        <Button onClick={() => this.handleRSVP(event.id)}>Register</Button>
-      )
+    const { event, account, rsvp, cancel } = this.props
+    if (cancel) {
+      return <Button onClick = {() => this.handleCancel(rsvp.id)} color='red'>Remove RSVP</Button>
     } else {
-      return (
-        <Button onClick={() => this.props.history.push(`/register`)}>Register to RSVP</Button>
-      )
+        if (account.id) {
+          return (
+            <Button onClick={() => this.handleRSVP(event.id)}>Register</Button>
+          )
+        } else {
+          return (
+            <Button onClick={() => this.props.history.push(`/register`)}>Register to RSVP</Button>
+          )
+        }
     }
   }
 }
