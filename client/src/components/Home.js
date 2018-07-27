@@ -39,7 +39,7 @@ import '../../node_modules/react-typist/dist/Typist.css'
               </div>
               <div style={{ padding: '15px 0px 0px 0px' }}>
               <Button 
-                style={{ background: "black", color: "white", boxShadow: "2px 2px 2px black"}}
+                style={{ background: "purple", color: "white", boxShadow: "2px 2px 2px black"}}
                 as='a' 
                 size='large' 
                 href="http://devpointlabs.com">
