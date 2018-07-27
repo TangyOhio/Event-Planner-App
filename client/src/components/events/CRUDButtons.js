@@ -21,10 +21,10 @@ class CRUDButtons extends Component {
             pathname: `/eventform`,
             state: { ...event, edit: true }
           })} 
-          color="green">
+          color="yellow">
             Edit Event
           </Button>
-          <Button color="red" onClick={() => { if (window.confirm('Are you sure you want to delete this event?')) { this.deleteEvent(event.id) }; }}>
+          <Button color="gray" onClick={() => { if (window.confirm('Are you sure you want to delete this event?')) { this.deleteEvent(event.id) }; }}>
             Remove Event
           </Button>
         </Fragment>

@@ -121,7 +121,7 @@ class ReusableForm extends React.Component {
     let { title, category, description, date, start_time, end_time, event_image, private_event } = this.state
     return (
       <Form onSubmit={this.handleSubmit}>
-        <Divider horizontal><Header as='h1'>Your Event</Header></Divider>
+        <Divider horizontal><Header as='h1' style={{textShadow:'2px 2px 2px gray'}}>Your Event</Header></Divider>
         <Form.Group widths='equal'>
           <Form.Field required>
             <Header as='label'>Event Title</Header>
@@ -195,7 +195,7 @@ class ReusableForm extends React.Component {
           <Header as='label'>Image</Header>
           <Input
             id='event_image'
-            placeholder='An Image for your Event'
+            placeholder='Image URL (http://)'
             value={event_image}
             onChange={this.handleChange}
           />

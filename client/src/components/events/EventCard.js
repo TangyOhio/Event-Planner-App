@@ -38,12 +38,12 @@ class EventCard extends Component {
   const { event, history, rsvp, cancel } = this.props
     return (
       <Fragment>
-        <Card key={event.id} >
+        <Card key={event.id} style={{ boxShadow: "2px 2px 5px grey"}} >
           <Image src={event.event_image} height="200" width="400" />
   
           <Card.Content>
             <Card.Header>
-              <Link to={`/events/${event.id}`}>{event.title}</Link>
+              <Link style={{ color:"black", textShadow:"0.5px 0.5px 0.5px gray"}} to={`/events/${event.id}`}>{event.title}</Link>
             </Card.Header>
   
             <Card.Meta>

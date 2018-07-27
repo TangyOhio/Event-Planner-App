@@ -12,59 +12,56 @@ import '../../node_modules/react-typist/dist/Typist.css'
     
     render() {
     return (
-      <Container className="home-page">
       <Segment basic style={{ padding: 0 }} >
         <Container>
           <Segment textAlign='center' style={{ padding: '5em 0em' }} vertical>
-            <Header as='h3' style={{ fontSize: '4.5em' }}>
-              <div style={{ display: 'flex', flexFlow: 'row noWrap', justifyContent: 'center' }}>
+            <Header as='h3' style={{ fontSize: '4.5em', background: "black", color:"green" }}>
+              <div style={{ display: 'flex', flexFlow: 'row noWrap', justifyContent: 'center', boxShadow: "2px 2px 2px black" }}>
                 <Typist show={true} blink={true} element='|'>Get Nerdy With Us.</Typist>
               </div>
             </Header>
-              <p 
-              text-color="white"
-              style={{ fontSize: '2em' }}
-              >
-                Join us at our next event!
-              </p>
+              <p style={{ padding: "40px 0px 0px 0px", fontSize: '2em', color:"white", textShadow: "2px 2px 2px black" }}>Join us at our next event!</p>
             <Link to='/register'>
-              <Button primary size='huge'>
+              <Button 
+                style={{ boxShadow: "2px 2px 2px black" }}
+                primary size='huge'>
                 Sign Up to RSVP
               </Button>
             </Link>
           </Segment>
         <Segment textAlign="center" style={{ padding: '6em 0em' }} vertical>
           <Container>
-              <Header as='h3' style={{ fontSize: '2em' }}>Upcoming Events</Header>
-         <div className="cal">
-              <MyCalendar
-                history={this.props.history}
-                />
-          </div>
-          <div style={{ padding: '15px' }}>
-              <Button as='a' size='large' href="http://devpointlabs.com">
-                Learn More
+            <Header as='h3' style={{ fontFamily: 'VT323', fontSize: '3em', background: 'black', color: 'green', boxShadow: "2px 2px 2px black" }}>
+            Upcoming Events
+            </Header>
+              <div className="cal">
+                <MyCalendar history={this.props.history}/>
+              </div>
+              <div style={{ padding: '15px 0px 0px 0px' }}>
+              <Button 
+                style={{ background: "black", color: "white", boxShadow: "2px 2px 2px black"}}
+                as='a' 
+                size='large' 
+                href="http://devpointlabs.com">
+                Learn More About Us
               </Button>
-          </div>
-                <Divider
-                  as='h4'
-                  className='header'
-                  horizontal
-                  style={{ margin: '3em 0em', textTransform: 'uppercase' }}
-                  >
-                  </Divider>
-              <Header as='h3' style={{ fontFamily: 'VT323', fontSize: '2em' }}>You scrolled this far... Nerd.</Header>
-              <p style={{ fontSize: '1.33em' }}>
-                All the cool kids wish they could be like us.
-              </p>
-              <Button as='a' size='large' href="http://www.devpointlabs.com/apply">Become a Student</Button>
+              </div>
+            <Header as='h3' style={{ fontFamily: 'VT323', fontSize: '3em', background: "black", color:"green", boxShadow: "2px 2px 2px black" }}>
+              Are you ready to code?
+            </Header>
+              <Button 
+                style={{ background: "green", color: "white", boxShadow: "2px 2px 2px black"}}
+                as='a' 
+                size='large' 
+                href="http://www.devpointlabs.com/apply">
+                Become a Student
+              </Button>
             </Container>
           </Segment>
         </Container>
       </Segment>
-      </Container>
     )
   }
 }
 
-export default Home
+export default Home;

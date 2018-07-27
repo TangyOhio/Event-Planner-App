@@ -10,8 +10,8 @@ import ProfilePage from './ProfilePage';
 import { getEvents } from '../../reducers/events';
 
 const StyledContainer = styled(Container)`
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   margin: 2em auto;
 `
 
@@ -59,7 +59,7 @@ class Profile extends Component {
   render() {
     return (
       <StyledContainer>
-        <Divider horizontal><Header as='h1'>Profile</Header></Divider>
+        <Divider horizontal><Header as='h1' style={{textShadow: '2px 2px 2px gray'}}>Profile</Header></Divider>
           <ProfilePage user={this.props.account} />
           <Tab menu={{ secondary: true, pointing: true }} panes={this.panes} />
       </StyledContainer>

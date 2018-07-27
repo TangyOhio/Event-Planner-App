@@ -36,7 +36,7 @@ class RSVPButton extends React.Component {
     } else {
         if (account.id) {
           return (
-            <Button onClick={() => this.handleRSVP(event.id)}>Register</Button>
+            <Button color="teal" onClick={() => this.handleRSVP(event.id)}>Register</Button>
           )
         } else {
           return (

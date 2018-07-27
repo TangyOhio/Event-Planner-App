@@ -44,11 +44,11 @@ class EventList extends React.Component {
   render() {
     return (
       <StyledContainer>
-        <Divider horizontal><Header as='h1'>Our Events</Header></Divider>
+        <Divider horizontal><Header as='h1' style={{ textShadow:"2px 2px 4px gray" }}>Our Events</Header></Divider>
         <Card.Group itemsPerRow={3}>
           {this.displayEvents()}
         </Card.Group>
-        <Divider horizontal><Header as='h1'>Our Past Events</Header></Divider>
+        <Divider horizontal><Header as='h1' style={{ textShadow:"2px 2px 4px gray" }}>Our Past Events</Header></Divider>
         <Card.Group itemsPerRow={3}>
           {this.displayPastEvents()}
         </Card.Group>
