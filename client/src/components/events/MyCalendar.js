@@ -4,6 +4,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 import moment from 'moment'
 import { connect } from 'react-redux'
 import { getEvents } from '../../reducers/events';
+import '../styles.css'
 
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
@@ -31,13 +32,14 @@ class MyCalendar extends React.Component {
   }
   
   showCal = () => (
-    <BigCalendar
-      events={this.formatEvents(this.props.events)}
-      defaultDate={new Date()}
-      style={{ height: '100vh' }}
-      views={['month', 'agenda']}
-      onSelectEvent={event => this.props.history.push(`/events/${event.id}`)}
-    />
+      <BigCalendar 
+        className="othercal"
+        events={this.formatEvents(this.props.events)}
+        defaultDate={new Date()}
+        style={{ height: '100vh', margin: '0px 20px 0px 20px' }}
+        views={['month', 'agenda']}
+        onSelectEvent={event => this.props.history.push(`/events/${event.id}`)}
+      />
   )
 
   render() {

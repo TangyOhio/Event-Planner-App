@@ -25,7 +25,7 @@ class Profile extends Component {
         'My Events', 
         render: () => 
           <Tab.Pane attached={false}>
-            <UserEvents 
+            <UserEvents
               rsvps={this.state.rsvps} 
               events={this.props.events} 
               account={this.props.account} 

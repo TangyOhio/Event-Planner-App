@@ -5,6 +5,18 @@ div.Typist {
 
 body {
   padding-top: 8em !important;
+  background: url('https://images.unsplash.com/photo-1483412468200-72182dbbc544?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=01f0ac7ce33cc98d0076e91dbea00911&auto=format&fit=crop&w=1506&q=80') no-repeat center center fixed !important;
+  box-sizing: inherit !important; 
+  width: '100%';
+  background-size: cover !important;
+}
+
+.cal {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.othercal {
+  background: rgba(255, 255, 255, 0.75);
 }
 
 .main-nav {
@@ -28,12 +40,10 @@ body {
   display: inline-block;
 }
 
-
-.wrapper {
+/* .wrapper {
   border: none !important;
-  margin-top: 0% !important;
-  
-}
+  margin-top: 0% !important;  
+} */
 
 .footer {
   background-color: #53407A!important;
