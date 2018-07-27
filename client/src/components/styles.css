@@ -1,4 +1,7 @@
 /* ****** Header ****** */
+div.Typist {
+  font-family: 'VT323'
+}
 
 body {
   padding-top: 8em !important;

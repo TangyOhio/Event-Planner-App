@@ -46,7 +46,7 @@ import '../../node_modules/react-typist/dist/Typist.css'
                   style={{ margin: '3em 0em', textTransform: 'uppercase' }}
                   >
                   </Divider>
-              <Header as='h3' style={{ fontSize: '2em' }}>You scrolled this far... Nerd.</Header>
+              <Header as='h3' style={{ fontFamily: 'VT323', fontSize: '2em' }}>You scrolled this far... Nerd.</Header>
               <p style={{ fontSize: '1.33em' }}>
                 All the cool kids with they could be like us.
               </p>
