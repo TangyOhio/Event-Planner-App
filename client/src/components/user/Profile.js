@@ -61,7 +61,7 @@ class Profile extends Component {
       <StyledContainer>
         <Divider horizontal><Header as='h1' style={{textShadow: '2px 2px 2px gray'}}>Profile</Header></Divider>
           <ProfilePage user={this.props.account} />
-          <Tab menu={{ secondary: true, pointing: true }} panes={this.panes} />
+          <Tab menu={{ color:'grey', inverted: true, secondary: true, pointing: true }} panes={this.panes} />
       </StyledContainer>
     )
   }
