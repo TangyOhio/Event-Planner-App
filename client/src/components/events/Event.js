@@ -32,6 +32,7 @@ class Event extends React.Component {
   render() {
     let { event } = this.state
     return (
+      <Segment style={{ margin: "0px 40px 20px 40px", display: "flex", justifyContent:"center"}}>
       <Segment className="ui container" vertical>
         <Grid columns={16} divided>
           <Grid.Row>
@@ -67,6 +68,7 @@ class Event extends React.Component {
             <CRUDButtons event={event} history={this.props.history} />
           </Grid.Row>
         </Grid>
+      </Segment>
       </Segment>
     )
   }
