@@ -51,45 +51,47 @@ class SettingsForm extends Component {
     let { email, name, nickname, image, is_admin } = this.state
     return (
       <StyledForm onSubmit={this.handleSubmit}>
-        <Form.Field inline >
-          <Header as='label'>Email</Header>
-          <Input
-            id='email'
-            placeholder={email}
-            value={email}
-            onChange={this.handleChange}
-            type='email'
-            required
-            autoFocus
-            />
-        </Form.Field>
-        <Form.Field inline >
-          <Header as='label'>Name</Header>
-          <Input
-            id='name'
-            placeholder='Name'
-            value={name}
-            onChange={this.handleChange}
-            />
-        </Form.Field>
-        <Form.Field inline >
-          <Header as='label'>Username</Header>
-          <Input
-            id='nickname'
-            placeholder='Username'
-            value={nickname}
-            onChange={this.handleChange}
-            />
-        </Form.Field>
-        <Form.Field inline >
-          <Header as='label'>Profile Picture</Header>
-          <Input
-            id='image'
-            placeholder='Profile Picture'
-            value={image}
-            onChange={this.handleChange}
-            />
-        </Form.Field>
+        <Form.Group widths='equal'>
+          <Form.Field inline >
+            <Header as='label'>Email</Header>
+            <Input
+              id='email'
+              placeholder={email}
+              value={email}
+              onChange={this.handleChange}
+              type='email'
+              required
+              autoFocus
+              />
+          </Form.Field>
+          <Form.Field inline >
+            <Header as='label'>Name</Header>
+            <Input
+              id='name'
+              placeholder='Name'
+              value={name}
+              onChange={this.handleChange}
+              />
+          </Form.Field>
+          <Form.Field inline >
+            <Header as='label'>Username</Header>
+            <Input
+              id='nickname'
+              placeholder='Username'
+              value={nickname}
+              onChange={this.handleChange}
+              />
+          </Form.Field>
+          <Form.Field inline >
+            <Header as='label'>Profile Picture</Header>
+            <Input
+              id='image'
+              placeholder='Profile Picture'
+              value={image}
+              onChange={this.handleChange}
+              />
+          </Form.Field>
+        </Form.Group>
         <Form.Field>
           <Checkbox
             id="is_admin"
