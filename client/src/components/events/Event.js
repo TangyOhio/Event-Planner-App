@@ -5,6 +5,7 @@ import moment from 'moment'
 import RSVPButton from './RSVPButton'
 import { connect } from 'react-redux'
 import CRUDButtons from './CRUDButtons'
+import ShareUs from '../ShareUs';
 
 
 class Event extends React.Component {
@@ -53,6 +54,7 @@ class Event extends React.Component {
             <Grid.Column width={10}>
               <h4>Description</h4>
               <p>{event.description}</p>
+              <p><ShareUs event={event} /></p>
             </Grid.Column>
 
             <Grid.Column width={6}>

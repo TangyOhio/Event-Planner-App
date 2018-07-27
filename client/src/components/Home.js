@@ -16,10 +16,7 @@ import '../../node_modules/react-typist/dist/Typist.css'
           <Segment textAlign='center' style={{ padding: '5em 0em' }} vertical>
             <Header as='h3' style={{ fontSize: '5em' }}>
               <div style={{ display: 'flex', flexFlow: 'row noWrap', justifyContent: 'center' }}>
-                Get Nerdy With Us.
-                <div style={{ position: 'relative', bottom: '5px' }}>
-                  <Typist show={true} blink={true} element='|' />
-                </div>
+                <Typist show={true} blink={true} element='|'>Get Nerdy With Us.</Typist>
               </div>
             </Header>
               <p style={{ fontSize: '2em' }}>
@@ -31,8 +28,8 @@ import '../../node_modules/react-typist/dist/Typist.css'
               </Button>
             </Link>
           </Segment>
-        <Segment textAlign="center" style={{ padding: '8em 0em' }} vertical>
-          <Container text>
+          <Segment textAlign="center" style={{ padding: '8em 0em' }} vertical>
+            <Container text>
               <Header as='h3' style={{ fontSize: '2em' }}>Upcoming Events</Header>
 
               <MyCalendar
