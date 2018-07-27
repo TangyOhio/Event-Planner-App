@@ -20,7 +20,9 @@ import '../../node_modules/react-typist/dist/Typist.css'
                 <Typist show={true} blink={true} element='|'>Get Nerdy With Us.</Typist>
               </div>
             </Header>
-              <p style={{ padding: "40px 0px 0px 0px", fontSize: '2em', color:"white", textShadow: "2px 2px 2px black" }}>Join us at our next event!</p>
+              <Header as='p' style={{ padding: "40px 0px 0px 0px", fontSize: '2.5em', color:"white", textShadow: "2px 2px 2px black" }}>
+                Join us at our next event!
+              </Header>
             <Link to='/register'>
               <Button 
                 style={{ boxShadow: "2px 2px 2px black" }}
@@ -64,4 +66,4 @@ import '../../node_modules/react-typist/dist/Typist.css'
   }
 }
 
-export default Home;
+export default Home

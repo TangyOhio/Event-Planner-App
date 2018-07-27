@@ -63,9 +63,10 @@ class Event extends React.Component {
               <Divider />
               <p>{this.eventTime(event, true)}</p>
               <p>{this.eventTime(event, false)}</p>
+              <Divider hidden/>
+              <CRUDButtons event={event} history={this.props.history} />
             </Grid.Column>
 
-            <CRUDButtons event={event} history={this.props.history} />
           </Grid.Row>
         </Grid>
       </Segment>

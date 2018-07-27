@@ -143,9 +143,10 @@ class ReusableForm extends React.Component {
               onChange={this.handleChange}
             />
           </Form.Field>
-          <Form.Field >
+          <Form.Field required>
             <Header as='label'>Description</Header>
             <Input
+              required
               id='description'
               placeholder='Description of the Event'
               value={description}
@@ -191,9 +192,10 @@ class ReusableForm extends React.Component {
           </Form.Field>
         </Form.Group>
         <Divider />
-        <Form.Field inline >
+        <Form.Field inline required>
           <Header as='label'>Image</Header>
           <Input
+            required  
             id='event_image'
             placeholder='Image URL (http://)'
             value={event_image}
