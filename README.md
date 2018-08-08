@@ -11,6 +11,5 @@ In a separate window, **yarn** in the **client** folder, then
 `yarn start`
 
 ## Other Information
-For more info, feel free to message me
 
 This program was built using [Create-Repack-App](https://github.com/wdjungst/create-repack-app)
