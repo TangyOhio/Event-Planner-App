@@ -1,24 +1,16 @@
-# README
+# Event Planner
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A web application for planning and organizing events
 
-Things you may want to cover:
+## - Basic Startup
 
-* Ruby version
+In the **root**, **bundle** and then:
+`rails s -p 3001`
 
-* System dependencies
+In a separate window, **yarn** in the **client** folder, then
+`yarn start`
 
-* Configuration
+## - Other Information
+For more info, feel free to message me
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This program was built using [Create-Repack-App](https://github.com/wdjungst/create-repack-app)
